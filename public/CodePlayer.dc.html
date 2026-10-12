@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/styles.css">
+  <script src="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/_ds_bundle.js"></script>
+</helmet>
+<div style="display: inline-grid; grid-template-columns: minmax(0, max-content); gap: 10px; max-width: 100%;">
+  <div style="display: flex; align-items: center; gap: 16px; background: var(--ink); border-radius: 20px; padding: 12px 22px 12px 12px; box-sizing: border-box; max-width: 100%; width: max-content;">
+    <button type="button" onClick="{{ toggle }}" aria-label="{{ playLabel }}" style="flex: none; width: 56px; height: 56px; border-radius: 999px; border: 0; background: var(--surface); color: var(--ink); display: flex; align-items: center; justify-content: center; cursor: pointer;">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="{{ iconPath }}"></path></svg>
+    </button>
+    <div role="slider" tabindex="0" aria-label="{{ seekLabel }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ pct }}" aria-valuetext="{{ timeText }}" onClick="{{ seek }}" onKeyDown="{{ seekKey }}" style="display: flex; align-items: center; gap: 4px; height: 56px; cursor: pointer; min-width: 0; overflow: hidden;">
+      <sc-for list="{{ bars }}" as="b" hint-placeholder-count="23">
+        <span style="flex: none; width: 6px; height: {{ b.h }}px; border-radius: 999px; background: {{ b.c }}; transition: background-color 120ms;"></span>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 0 4px; width: 0; min-width: 100%;">
+    <span class="meta" style="color: {{ labelColor }};">{{ title }} · {{ artist }}</span>
+    <span class="meta" style="color: {{ mutedColor }};">{{ timeText }}{{ note }}</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:400,&quot;height&quot;:140},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Breaking Point&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;artist&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Madox&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;src&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;seed&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;onFill&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+function hash(s) { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+function fmt(t) { if (!isFinite(t)) return '0:00'; const m = Math.floor(t / 60), s = Math.floor(t % 60); return m + ':' + String(s).padStart(2, '0'); }
+const N = 23, SIM = 30;
+
+class Component extends DCLogic {
+  state = { playing: false, t: 0, dur: 0 };
+  heights() {
+    let h = hash(this.props.seed || this.props.title || 'madox');
+    return Array.from({ length: N }, (_, i) => {
+      if (i === 0 || i === N - 1) return 14;
+      h = Math.imul(h ^ (h >>> 13), 1274126177) >>> 0;
+      return 10 + (h % 8) * 6.5;
+    });
+  }
+  componentDidMount() {
+    this.id = Math.random().toString(36).slice(2);
+    this.onOther = (e) => { if (e.detail !== this.id && this.state.playing) this.pause(); };
+    window.addEventListener('mx-play', this.onOther);
+    this.setupAudio();
+  }
+  componentDidUpdate(pp) { if (pp && pp.src !== this.props.src) this.setupAudio(); }
+  componentWillUnmount() { window.removeEventListener('mx-play', this.onOther); this.pause(); if (this.audio) this.audio.src = ''; }
+  setupAudio() {
+    if (this.audio) { this.audio.pause(); this.audio = null; }
+    const src = this.props.src;
+    if (!src) { this.setState({ dur: SIM, t: 0, playing: false }); return; }
+    const a = new Audio(src);
+    a.preload = 'metadata';
+    a.addEventListener('loadedmetadata', () => this.setState({ dur: a.duration }));
+    a.addEventListener('timeupdate', () => this.setState({ t: a.currentTime }));
+    a.addEventListener('ended', () => this.setState({ playing: false, t: 0 }));
+    this.audio = a;
+    this.setState({ t: 0, playing: false });
+  }
+  play() {
+    window.dispatchEvent(new CustomEvent('mx-play', { detail: this.id }));
+    if (this.audio) this.audio.play().catch(() => {});
+    else {
+      let last = performance.now();
+      const tick = (now) => {
+        const t = this.state.t + (now - last) / 1000; last = now;
+        if (t >= SIM) { this.setState({ t: 0, playing: false }); return; }
+        this.setState({ t }); this.raf = requestAnimationFrame(tick);
+      };
+      this.raf = requestAnimationFrame(tick);
+    }
+    this.setState({ playing: true });
+  }
+  pause() {
+    if (this.audio) this.audio.pause();
+    cancelAnimationFrame(this.raf);
+    this.setState({ playing: false });
+  }
+  seekTo(f) {
+    const dur = this.state.dur || SIM, t = Math.max(0, Math.min(1, f)) * dur;
+    if (this.audio) this.audio.currentTime = t;
+    this.setState({ t });
+  }
+  renderVals() {
+    const { playing, t } = this.state, dur = this.state.dur || SIM;
+    const f = t / dur, onFill = this.props.onFill;
+    const bars = this.heights().map((h, i) => ({ h, c: (i + 0.5) / N <= f && (playing || t > 0) ? 'var(--accent)' : 'var(--surface)' }));
+    return {
+      title: this.props.title ?? '[Track title]', artist: this.props.artist ?? 'Madox',
+      bars, pct: Math.round(f * 100),
+      timeText: fmt(t) + ' / ' + (this.props.src ? fmt(dur) : '[length]'),
+      note: this.props.src ? '' : ' · [audio file]',
+      labelColor: onFill ? 'var(--on-fill)' : 'var(--ink)', mutedColor: onFill ? 'var(--on-fill)' : 'var(--ink-muted)',
+      playLabel: (playing ? 'Pause ' : 'Play ') + (this.props.title || 'track'),
+      seekLabel: 'Seek ' + (this.props.title || 'track'),
+      iconPath: playing ? 'M8 5v14M16 5v14' : 'M8 5.5v13l10.5-6.5z',
+      toggle: () => (playing ? this.pause() : this.play()),
+      seek: (e) => { const r = e.currentTarget.getBoundingClientRect(); this.seekTo((e.clientX - r.left) / r.width); },
+      seekKey: (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); this.seekTo(f + 0.05); }
+        else if (e.key === 'ArrowLeft') { e.preventDefault(); this.seekTo(f - 0.05); }
+        else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); playing ? this.pause() : this.play(); }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

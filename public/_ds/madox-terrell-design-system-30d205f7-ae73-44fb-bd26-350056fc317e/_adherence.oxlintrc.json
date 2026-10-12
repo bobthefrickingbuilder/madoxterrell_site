@@ -1,0 +1,253 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/actions/**",
+              "components/brand/**",
+              "components/forms/**",
+              "components/navigation/**",
+              "components/shop/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Figtree|Martian Mono))/i]",
+        "message": "Font not provided by the design system. Available: Figtree, Martian Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|href|onClick|type|disabled|className|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, href, onClick, type, disabled, className, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|light|outline)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'light' | 'outline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='type'] > Literal[value!=/^(?:button|submit|reset)$/]",
+        "message": "<Button> type must be one of 'button' | 'submit' | 'reset'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Chip'] > JSXAttribute > JSXIdentifier[name!=/^(?:selected|onClick|children|key|ref|className|style|children)$/]",
+        "message": "<Chip> doesn't accept that prop. Declared props: selected, onClick, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute > JSXIdentifier[name!=/^(?:id|label|type|multiline|rows|placeholder|help|error|value|defaultValue|onChange|key|ref|className|style|children)$/]",
+        "message": "<Field> doesn't accept that prop. Declared props: id, label, type, multiline, rows, placeholder, help, error, value, defaultValue, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ScoreCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|href|instrumentation|meta|price|cover|onAdd|addLabel|key|ref|className|style|children)$/]",
+        "message": "<ScoreCard> doesn't accept that prop. Declared props: title, href, instrumentation, meta, price, cover, onAdd, addLabel."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SiteHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:links|active|cartCount|onNavigate|onCart|key|ref|className|style|children)$/]",
+        "message": "<SiteHeader> doesn't accept that prop. Declared props: links, active, cartCount, onNavigate, onCart."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Waveform'] > JSXAttribute > JSXIdentifier[name!=/^(?:bars|height|key|ref|className|style|children)$/]",
+        "message": "<Waveform> doesn't accept that prop. Declared props: bars, height."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Button": {
+        "replaces": []
+      },
+      "Chip": {
+        "replaces": []
+      },
+      "Field": {
+        "replaces": []
+      },
+      "ScoreCard": {
+        "replaces": []
+      },
+      "SiteHeader": {
+        "replaces": []
+      },
+      "Waveform": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--action",
+      "--border-field",
+      "--border-hairline",
+      "--container",
+      "--control-height",
+      "--dur-page",
+      "--dur-section",
+      "--dur-state",
+      "--fill-feature",
+      "--fill-primary",
+      "--focus",
+      "--focus-offset",
+      "--focus-ring",
+      "--font-display",
+      "--font-sans",
+      "--forest",
+      "--ink",
+      "--ink-muted",
+      "--ink-on-light",
+      "--line",
+      "--mint",
+      "--navy",
+      "--on-fill",
+      "--panel-light",
+      "--paper",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--sage",
+      "--shadow-cover",
+      "--sky",
+      "--space-1",
+      "--space-12",
+      "--space-16",
+      "--space-2",
+      "--space-24",
+      "--space-3",
+      "--space-4",
+      "--space-6",
+      "--space-8",
+      "--surface",
+      "--surface-alt",
+      "--surface-card",
+      "--surface-page",
+      "--taupe",
+      "--text-body",
+      "--text-body-lg",
+      "--text-button",
+      "--text-display-lg",
+      "--text-display-md",
+      "--text-display-xl",
+      "--text-eyebrow",
+      "--text-hero-name",
+      "--text-label",
+      "--text-meta",
+      "--text-muted",
+      "--text-on-fill",
+      "--text-price",
+      "--text-score-title",
+      "--text-small",
+      "--touch-min",
+      "--tracking-eyebrow",
+      "--violet",
+      "--violet-raw",
+      "--wine"
+    ],
+    "tokenKinds": {
+      "--surface": "color",
+      "--surface-alt": "color",
+      "--ink": "color",
+      "--ink-muted": "color",
+      "--accent": "color",
+      "--violet": "color",
+      "--action": "color",
+      "--line": "color",
+      "--on-fill": "color",
+      "--ink-on-light": "color",
+      "--panel-light": "color",
+      "--focus": "color",
+      "--shadow-cover": "shadow",
+      "--navy": "color",
+      "--forest": "color",
+      "--mint": "color",
+      "--sage": "color",
+      "--sky": "color",
+      "--violet-raw": "color",
+      "--wine": "color",
+      "--taupe": "color",
+      "--paper": "color",
+      "--text-body": "font",
+      "--text-muted": "font",
+      "--text-on-fill": "font",
+      "--surface-page": "color",
+      "--surface-card": "color",
+      "--fill-primary": "color",
+      "--fill-feature": "color",
+      "--border-hairline": "color",
+      "--border-field": "color",
+      "--font-display": "font",
+      "--font-sans": "font",
+      "--text-hero-name": "font",
+      "--text-display-xl": "font",
+      "--text-display-lg": "font",
+      "--text-display-md": "font",
+      "--text-score-title": "font",
+      "--text-price": "font",
+      "--text-eyebrow": "font",
+      "--text-meta": "font",
+      "--text-body-lg": "font",
+      "--text-small": "font",
+      "--text-label": "font",
+      "--text-button": "font",
+      "--tracking-eyebrow": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-6": "spacing",
+      "--space-8": "spacing",
+      "--space-12": "spacing",
+      "--space-16": "spacing",
+      "--space-24": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-pill": "radius",
+      "--container": "spacing",
+      "--control-height": "spacing",
+      "--touch-min": "spacing",
+      "--focus-ring": "color",
+      "--focus-offset": "spacing",
+      "--dur-section": "other",
+      "--dur-page": "other",
+      "--dur-state": "other"
+    },
+    "fontFamilies": [
+      "Figtree",
+      "Martian Mono"
+    ]
+  }
+}

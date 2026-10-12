@@ -1,27 +1,997 @@
-<!doctype html>
-<html lang="en" data-theme="night">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Madox Terrell | Composer, vocalist and producer</title>
-<meta name="description" content="Madox Terrell is an Ottawa composer, vocalist and producer. Choral and electronic music, and sheet music as PDF downloads.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Martian+Mono:wght@600;800&display=swap">
-<link rel="stylesheet" href="/css/tokens.css">
-<style>
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; background: var(--surface); color: var(--ink); font-family: var(--font-sans); }
-  main { box-sizing: border-box; width: 100%; max-width: 1240px; margin: 0 auto; padding: var(--space-8); }
-  .eyebrow { margin: 0 0 var(--space-4); text-transform: uppercase; color: var(--ink-muted); }
-  h1 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(56px, 12vw, 120px); line-height: 0.95; letter-spacing: -0.02em; }
-  h1 span { color: var(--accent); }
-  p.lead { margin: var(--space-8) 0 0; max-width: 520px; font-size: 20px; line-height: 32px; }
-</style>
+<script src="./support.js"></script>
 </head>
 <body>
-<main>
-  <p class="eyebrow">Composer / Vocalist / Producer</p>
-  <h1>Madox<br><span>Terrell</span></h1>
-  <p class="lead">Choral and electronic music, written, sung and produced in Ottawa. New site coming soon.</p>
-</main>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/tokens/base.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/components/components.css">
+  <link rel="stylesheet" href="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/styles.css">
+  <script src="_ds/madox-terrell-design-system-30d205f7-ae73-44fb-bd26-350056fc317e/_ds_bundle.js"></script>
+  <script src="./image-slot.js"></script>
+  <style>
+    @keyframes mx-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) { [data-marquee] { animation: none !important; } }
+    html, body { margin: 0; background: #313d5a; }
+    a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 4px; }
+    a:hover { color: var(--on-fill); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--surface); color: var(--ink); font-family: var(--font-sans);">
+
+  <a href="#main" style="position: absolute; left: -9999px; top: 8px;" style-focus="left: 8px; background: var(--ink); color: var(--surface); padding: 12px 16px; border-radius: 4px; z-index: 50;">Skip to content</a>
+
+  <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+    <header class="mx-header" style="border-bottom: 1px solid var(--line);">
+      <a class="mx-header__brand" href="#/home">Madox Terrell</a>
+      <nav class="mx-header__nav" aria-label="Main" onMouseLeave="{{ navLeave }}" onBlur="{{ navLeave }}" style="position: relative;">
+        <sc-for list="{{ deskNav }}" as="n" hint-placeholder-count="5">
+          <a class="mx-header__link" href="{{ n.href }}" ref="{{ n.ref }}" aria-current="{{ n.current }}" onMouseEnter="{{ n.hover }}" onFocus="{{ n.hover }}" style="border-bottom-color: transparent;">{{ n.label }}</a>
+        </sc-for>
+        <span aria-hidden="true" style="position: absolute; bottom: 0; height: 3px; border-radius: 999px; background: var(--accent); pointer-events: none; left: {{ ind.left }}px; width: {{ ind.width }}px; opacity: {{ ind.opacity }}; transition: {{ ind.transition }};"></span>
+      </nav>
+      <a class="mx-header__cart" href="#/cart" aria-label="{{ cartAria }}">
+        <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6.2"></path><circle cx="9.5" cy="19.5" r="1.3"></circle><circle cx="17" cy="19.5" r="1.3"></circle></svg>
+        <span class="mx-header__count meta">{{ cartCount }}</span>
+      </a>
+    </header>
+  </sc-if>
+
+  <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+    <header style="background: var(--surface); border-bottom: 1px solid var(--line); padding: 12px 16px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+        <a href="#/home" style="display: flex; align-items: center; min-height: 44px; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--ink); text-decoration: none;">Madox Terrell</a>
+        <div style="display: flex; align-items: center; gap: 4px;">
+          <a href="#/cart" aria-label="{{ cartAria }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 0 8px; color: var(--ink); text-decoration: none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6.2"></path><circle cx="9.5" cy="19.5" r="1.3"></circle><circle cx="17" cy="19.5" r="1.3"></circle></svg>
+            <span class="meta">{{ cartCount }}</span>
+          </a>
+          <button type="button" aria-label="Menu" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-nav" onClick="{{ toggleMenu }}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; background: transparent; border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); cursor: pointer;">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ menuIconPath }}"></path></svg>
+          </button>
+        </div>
+      </div>
+      <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+        <nav id="mobile-nav" aria-label="Main" style="display: flex; flex-direction: column; padding: 8px 0 4px;">
+          <sc-for list="{{ mobileNav }}" as="n" hint-placeholder-count="5">
+            <a href="{{ n.href }}" aria-current="{{ n.current }}" style="display: flex; align-items: center; justify-content: space-between; min-height: 48px; border-bottom: 1px solid var(--line); font-size: 18px; font-weight: 600; color: var(--ink); text-decoration: none;">
+              <span style="border-bottom: 3px solid {{ n.underline }}; padding: 4px 0;">{{ n.label }}</span>
+            </a>
+          </sc-for>
+        </nav>
+      </sc-if>
+    </header>
+  </sc-if>
+
+  <main id="main" style="flex: 1; opacity: {{ mainOpacity }}; transform: {{ mainTransform }}; transition: {{ mainTransition }};">
+
+    <!-- HOME -->
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="Home" style="background: var(--surface); padding: clamp(32px, 5vw, 64px) 0 clamp(72px, 9vw, 128px); overflow: hidden;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 460px), 1fr)); gap: clamp(48px, 6vw, 72px); align-items: center;">
+          <div style="display: flex; flex-direction: column; gap: 28px; position: relative; z-index: 5;">
+            <p class="eyebrow mx-eyebrow">Composer · Vocalist · Producer · Ottawa</p>
+            <h1 class="hero-name" style="margin: 0 min(0px, calc((960px - 100vw) * 0.3)) 0 0; font-size: clamp(56px, 10vw, 132px); line-height: 0.92;">Madox<br><span style="color: var(--accent);">Terrell</span></h1>
+            <p class="body-lg" style="margin: 0; max-width: 460px; text-wrap: pretty;">Choral and electronic music, written, sung and produced in Ottawa.</p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px;">
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" href="#/scores" hint-size="140px,48px">View scores</x-import>
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="outline" href="#/about" hint-size="110px,48px">About</x-import>
+              <a href="#listen" onClick="{{ scrollToListen }}" class="label" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px;">Listen</a>
+            </div>
+            <div style="margin-top: 24px; overflow: hidden;">
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Waveform" height="{{ 96 }}" hint-size="322px,96px"></x-import>
+            </div>
+          </div>
+          <div style="position: relative; width: 100%; max-width: 600px; justify-self: end; aspect-ratio: 5 / 6;">
+            <div style="position: absolute; top: 0; right: 0; width: 72%; height: 58%; background: var(--violet); border-radius: 20px;">
+              <image-slot id="home-hero-back" shape="rounded" radius="20" src="assets/breaking-point-cover.jpg" alt="Breaking Point album cover" placeholder="[Photo]"></image-slot>
+            </div>
+            <div style="position: absolute; bottom: 14%; left: -9%; width: 26%; aspect-ratio: 1 / 1; background: var(--surface-alt); border-radius: 20px;">
+              <image-slot id="home-hero-small" shape="rounded" radius="20" src="assets/downbeat-cover.jpg" alt="Downbeat: The OST cover" placeholder="[Photo]"></image-slot>
+            </div>
+            <div style="position: absolute; top: calc(7% - 8px); left: calc(8% - 8px); width: calc(66% + 16px); height: calc(72% + 16px); z-index: 2; border: 8px solid var(--surface); border-radius: 28px; box-sizing: border-box; background: var(--surface);">
+              <image-slot id="home-hero-main" shape="rounded" radius="20" src="assets/madox-side-profile.jpg" alt="Madox Terrell in profile, black and white" placeholder="[Photo: Madox Terrell, portrait]"></image-slot>
+            </div>
+            <div style="position: absolute; right: 0; bottom: 8%; width: 42%; height: 38%; z-index: 3; border: 8px solid var(--surface); border-radius: 20px; box-sizing: border-box; background: var(--surface);">
+              <image-slot id="home-hero-second" shape="rounded" radius="12" src="assets/madox-studio.jpg" alt="Studio portrait of Madox Terrell" placeholder="[Photo: studio]"></image-slot>
+            </div>
+            <div style="position: absolute; left: 0; bottom: 0; z-index: 4; max-width: 100%;">
+              <dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point" src="{{ audioSrc }}" hint-size="330px,110px"></dc-import>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Ensembles and venues" style="background: var(--surface-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 0;">
+        {{ marquee }}
+      </section>
+
+      <section data-reveal="" style="background: var(--surface); padding: clamp(72px, 9vw, 128px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: clamp(48px, 6vw, 80px);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 24px 48px; align-items: end;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <p class="eyebrow mx-eyebrow">Sound</p>
+              <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 6vw, 72px); line-height: 1.04;">Two sides of one <span style="color: var(--accent);">musician</span></h2>
+            </div>
+            <p class="body-lg" style="margin: 0; max-width: 520px; text-wrap: pretty;">Choral writing for ensembles across Ontario, and records produced under the name Madox.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px; align-items: start;">
+            <article style="position: relative; background: var(--violet); color: var(--on-fill); border-radius: 20px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 20px; margin-top: 40px;">
+              <a href="#/score/remember" aria-label="Remember, first page of score" style="position: absolute; top: -40px; right: clamp(16px, 4vw, 40px); width: clamp(110px, 14vw, 150px); aspect-ratio: 8.5 / 11; background: var(--panel-light); border-radius: 12px; box-shadow: var(--shadow-cover); overflow: hidden; display: block;">
+                <img src="assets/remember-score-p1.png" alt="" style="position: absolute; display: block; width: 200%; height: auto; max-width: none; left: -50%; top: -52.6%;">
+              </a>
+              <p class="eyebrow" style="margin: 0;">Choral</p>
+              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22; max-width: 60%;">Writing for choirs</h3>
+              <div style="aspect-ratio: 16 / 10; width: 100%;">
+                <image-slot id="home-choral" shape="rounded" radius="12" placeholder="[Photo: choir rehearsal or premiere]"></image-slot>
+              </div>
+              <p class="body" style="margin: 0; text-wrap: pretty;">Over three hours of choral music for commissions across Ontario, and six seasons as Composer-in-Residence with the Ottawa Regional Youth Choir.</p>
+              <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/scores" hint-size="160px,48px">Browse scores</x-import></div>
+            </article>
+            <article style="position: relative; background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 20px; margin-top: {{ sideOffset }}px;">
+              <p class="eyebrow mx-eyebrow">Electronic</p>
+              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22;">Records as Madox</h3>
+              <div style="position: relative; aspect-ratio: 16 / 10; width: 100%;">
+                <image-slot id="home-electronic" shape="rounded" radius="12" placeholder="[Photo: Madox in the studio]"></image-slot>
+              </div>
+              <p class="body" style="margin: 0; text-wrap: pretty;">Four albums written and produced, with over 100,000 streams across platforms. Also the electronic score for the video game Downbeat (2021).</p>
+              <dc-import name="CodePlayer" title="Downbeat" artist="Madox" seed="downbeat" hint-size="330px,110px"></dc-import>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="listen" data-reveal="" style="background: var(--surface-alt); padding: clamp(120px, 12vw, 160px) 0 clamp(72px, 9vw, 128px);">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box;">
+          <article style="background: var(--action); color: var(--on-fill); border-radius: 20px; padding: 0 clamp(24px, 4vw, 56px) clamp(24px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 40px clamp(32px, 5vw, 72px); align-items: end;">
+            <div style="position: relative; margin-top: -72px; width: 100%; max-width: 480px; aspect-ratio: 1 / 1;">
+              <div aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 88%; height: 88%; background: var(--violet); border-radius: 12px; transform: translate(14%, 14%);"></div>
+              <div aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 88%; height: 88%; background: var(--surface); border-radius: 12px; transform: translate(7%, 7%);"></div>
+              <div style="position: absolute; top: 0; left: 0; width: 88%; height: 88%;">
+                <image-slot id="home-release-art" shape="rounded" radius="12" placeholder="[Breaking Point artwork]"></image-slot>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px; padding-top: clamp(0px, 4vw, 56px);">
+              <p class="eyebrow" style="margin: 0;">Latest release</p>
+              <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 5.6vw, 72px); line-height: 1.04;">Breaking<br>Point</h2>
+              <p class="meta" style="margin: 0;">Madox · 2023 · Album</p>
+              <p class="body" style="margin: 0; max-width: 480px;">A 30-minute electronic and acoustic album, with over 33,000 plays.</p>
+              <div style="margin-top: 8px;"><dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point-2" src="{{ audioSrc }}" on-fill="{{ true }}" hint-size="330px,110px"></dc-import></div>
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 24px;">
+                <a href="#spotify" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">Spotify [link]</a>
+                <a href="#apple-music" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">Apple Music [link]</a>
+                <a href="#youtube" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">YouTube: Lost in Translation [link]</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section data-reveal="" style="background: var(--surface); padding: clamp(72px, 9vw, 128px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 48px;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <p class="eyebrow mx-eyebrow">Scores</p>
+              <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 6vw, 72px); line-height: 1.04;">Sheet music</h2>
+              <p class="body" style="margin: 0; color: var(--ink-muted);">PDF. Digital download, instant delivery.</p>
+            </div>
+            <a href="#/scores" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">View all scores</a>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, 340px); gap: 24px; justify-content: space-between; align-items: start;">
+            <sc-for list="{{ featuredScores }}" as="s" hint-placeholder-count="3">
+              <div style="margin-top: {{ s.offset }}px;">
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+
+      <section data-reveal="" style="background: var(--surface-alt); padding: clamp(72px, 9vw, 128px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(48px, 6vw, 96px); align-items: center;">
+          <div style="position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 1;">
+            <div aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 70%; height: 82%; background: var(--surface); border-radius: 20px;"></div>
+            <div style="position: absolute; top: 8%; left: 10%; width: 62%; height: 84%; z-index: 2;">
+              <image-slot id="home-about-portrait" shape="rounded" radius="20" placeholder="[Portrait of Madox]"></image-slot>
+            </div>
+            <div style="position: absolute; right: 0; top: 30%; width: 40%; height: 40%; z-index: 3; border: 8px solid var(--surface-alt); border-radius: 20px; box-sizing: border-box; background: var(--surface-alt);">
+              <image-slot id="home-about-second" shape="rounded" radius="12" placeholder="[Photo: conducting or cantor]"></image-slot>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+            <p class="eyebrow mx-eyebrow">About</p>
+            <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">Madox Terrell</h2>
+            <p class="body-lg" style="margin: 0; text-wrap: pretty;">A multi-disciplinary musician with a background in composition for voice and more than a decade of performance experience, interested in choral composition, vocal performance and experimental sound design.</p>
+            <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; width: 100%; border-top: 1px solid var(--line); padding-top: 24px;">
+              <div style="display: flex; flex-direction: column; gap: 4px;"><dt class="eyebrow mx-eyebrow">Studied</dt><dd class="body" style="margin: 0;">University of Ottawa, BMus 2024</dd></div>
+              <div style="display: flex; flex-direction: column; gap: 4px;"><dt class="eyebrow mx-eyebrow">Sings with</dt><dd class="body" style="margin: 0;">Capital Chamber Choir</dd></div>
+              <div style="display: flex; flex-direction: column; gap: 4px;"><dt class="eyebrow mx-eyebrow">Cantor</dt><dd class="body" style="margin: 0;">St. Joseph's Parish</dd></div>
+            </dl>
+            <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="outline" href="#/about" hint-size="170px,48px">Read biography</x-import>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- SCORES -->
+    <sc-if value="{{ isScores }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Scores" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <p class="eyebrow mx-eyebrow">Shop</p>
+            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Scores</h1>
+            <p class="body-lg" style="margin: 0; max-width: 640px;">PDF scores for choirs, voice and piano. Digital download, instant delivery.</p>
+            <p class="small" style="margin: 0; color: var(--ink-muted);">[Catalogue to be confirmed by Madox: which works are for sale]</p>
+          </div>
+          <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+            <legend class="label" style="padding: 0; margin-bottom: 12px;">Instrumentation</legend>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+              <sc-for list="{{ filterChips }}" as="c" hint-placeholder-count="5">
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Chip" selected="{{ c.selected }}" on-click="{{ c.toggle }}" hint-size="100px,44px">{{ c.label }}</x-import>
+              </sc-for>
+            </div>
+          </fieldset>
+          <p class="meta" role="status" style="margin: 0; color: var(--ink-muted);">{{ resultCount }}</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fill, 340px); gap: 24px; justify-content: start;">
+            <sc-for list="{{ visibleScores }}" as="s" hint-placeholder-count="6">
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
+            </sc-for>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- SCORE DETAIL -->
+    <sc-if value="{{ isScore }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Score detail" style="background: var(--surface); padding: clamp(32px, 5vw, 64px) 0 clamp(64px, 8vw, 96px);">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <a href="#/scores" class="label" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; align-self: flex-start;">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Back to Scores
+          </a>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(32px, 5vw, 64px); align-items: start;">
+            <div style="position: relative; max-width: 520px; width: 100%; padding: 0 32px 32px 0; box-sizing: border-box;">
+              <div aria-hidden="true" style="position: absolute; top: 32px; left: 32px; right: 0; bottom: 0; background: var(--violet); border-radius: 20px;"></div>
+              <div style="position: relative; background: var(--panel-light); color: var(--ink-on-light); border-radius: 12px; box-shadow: var(--shadow-cover); aspect-ratio: 8.5 / 11; display: flex; align-items: center; justify-content: center;">
+                <span class="meta">[First page of score]</span>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <div style="display: flex; flex-direction: column; gap: 12px;">
+                <p class="eyebrow mx-eyebrow">{{ score.instr }}</p>
+                <h1 class="display-lg" style="margin: 0; font-size: clamp(34px, 5vw, 52px); line-height: 1.12; overflow-wrap: anywhere;">{{ score.title }}</h1>
+                <p class="meta" style="margin: 0; color: var(--ink-muted);">{{ score.year }} · PDF</p>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+                <span class="price" style="color: var(--accent); font-size: clamp(28px, 4vw, 40px); line-height: 1.1;">{{ score.price }}</span>
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" on-click="{{ score.onAdd }}" hint-size="150px,48px">{{ score.addLabel }}</x-import>
+              </div>
+              <sc-if value="{{ score.justAdded }}" hint-placeholder-val="{{ false }}">
+                <p role="status" class="body" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px;">
+                  <span style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600;"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Added to cart</span>
+                  <a href="#/cart">View cart</a>
+                </p>
+              </sc-if>
+              <p class="small" style="margin: 0; color: var(--ink-muted);">Digital download, instant delivery after payment.</p>
+              <dl style="margin: 0; display: grid; grid-template-columns: minmax(110px, auto) 1fr; border-top: 1px solid var(--line);">
+                <sc-for list="{{ score.rows }}" as="r" hint-placeholder-count="5">
+                  <dt class="eyebrow" style="padding: 14px 16px 14px 0; border-bottom: 1px solid var(--line); color: var(--ink-muted);">{{ r.k }}</dt>
+                  <dd class="body" style="margin: 0; padding: 10px 0; border-bottom: 1px solid var(--line); color: {{ r.color }};">{{ r.v }}</dd>
+                </sc-for>
+              </dl>
+              <p class="body" style="margin: 0; text-wrap: pretty;">{{ score.desc }}</p>
+              <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;">
+                <span class="eyebrow mx-eyebrow">Share</span>
+                <a href="#share-facebook" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
+                <a href="#share-instagram" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section data-reveal="" style="background: var(--surface-alt); padding: clamp(64px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 24px;">
+          <div style="border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; gap: 12px;"><p class="eyebrow mx-eyebrow">Listen</p><p class="eyebrow mx-eyebrow">Optional</p></div>
+            <dc-import name="CodePlayer" title="{{ score.title }}" artist="Madox Terrell" seed="{{ score.id }}" hint-size="330px,110px"></dc-import>
+          </div>
+          <div style="border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; justify-content: space-between; gap: 12px;"><p class="eyebrow mx-eyebrow">Preview</p><p class="eyebrow mx-eyebrow">Optional</p></div>
+            <div style="min-height: 96px; border: 2px solid var(--ink-muted); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><span class="meta" style="color: var(--ink-muted);">[Score preview]</span></div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- CART -->
+    <sc-if value="{{ isCart }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Cart" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Cart</h1>
+          <sc-if value="{{ cartEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+              <p class="score-title" style="margin: 0;">Your cart is empty</p>
+              <a href="#/scores" class="body">Browse scores</a>
+            </div>
+          </sc-if>
+          <sc-if value="{{ cartHasItems }}" hint-placeholder-val="{{ false }}">
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+              <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2">
+                <li style="background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+                  <div style="display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1 1 220px;">
+                    <p class="eyebrow mx-eyebrow">{{ l.instr }}</p>
+                    <a href="{{ l.href }}" class="score-title" style="text-decoration: none; overflow-wrap: anywhere;">{{ l.title }}</a>
+                    <p class="meta" style="margin: 0; color: var(--ink-muted);">PDF · Instant download</p>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 16px;">
+                    <span class="price" style="color: var(--accent);">{{ l.price }}</span>
+                    <button type="button" onClick="{{ l.remove }}" aria-label="{{ l.removeLabel }}" class="mx-btn mx-btn--outline">Remove</button>
+                  </div>
+                </li>
+              </sc-for>
+            </ul>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--line); padding-top: 24px;">
+              <div style="display: flex; flex-direction: column; gap: 4px;">
+                <span class="eyebrow mx-eyebrow">Subtotal · {{ cartItemsLabel }}</span>
+                <span class="price" style="color: var(--accent);">[subtotal] CAD</span>
+              </div>
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" href="#/checkout" hint-size="140px,48px">Checkout</x-import>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- CHECKOUT -->
+    <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Checkout" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <a href="#/cart" class="label" style="display: inline-flex; align-items: center; gap: 8px; min-height: 44px; align-self: flex-start;"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>Back to cart</a>
+          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Checkout</h1>
+          <div style="display: flex; flex-direction: column; border-top: 1px solid var(--line);">
+            <sc-for list="{{ cartLines }}" as="l" hint-placeholder-count="2">
+              <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; padding: 16px 0; border-bottom: 1px solid var(--line);">
+                <span class="body" style="font-weight: 600;">{{ l.title }} <span style="color: var(--ink-muted); font-weight: 400;">· PDF</span></span>
+                <span class="meta">{{ l.price }}</span>
+              </div>
+            </sc-for>
+            <div style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 0;">
+              <span class="eyebrow mx-eyebrow">Total</span>
+              <span class="price" style="color: var(--accent);">[total] CAD</span>
+            </div>
+          </div>
+          <div style="border: 2px solid var(--ink-muted); border-radius: 20px; min-height: 240px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 24px; text-align: center;">
+            <span class="meta" style="color: var(--ink-muted);">[payment provider]</span>
+            <span class="small" style="color: var(--ink-muted);">[Payment form supplied by the provider]</span>
+          </div>
+          <p class="body" style="margin: 0; text-wrap: pretty;">Your PDF is delivered instantly after payment, by download link and email. Read the <a href="#/refund">Refund Policy</a> before you buy.</p>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- GALLERY -->
+    <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Gallery" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Gallery</h1>
+          <ul style="list-style: none; margin: 0; padding: 0; columns: 3 280px; column-gap: 24px;">
+            <sc-for list="{{ photos }}" as="p" hint-placeholder-count="5">
+              <li style="break-inside: avoid; margin: 0 0 24px;">
+                <button type="button" onClick="{{ p.open }}" aria-label="{{ p.aria }}" style="display: block; width: 100%; padding: 0; border: 0; background: transparent; border-radius: 12px; overflow: hidden; cursor: zoom-in;">
+                  <img src="{{ p.src }}" alt="{{ p.alt }}" loading="lazy" style="display: block; width: 100%; height: auto;">
+                </button>
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+      </section>
+
+      <section data-reveal="" style="background: var(--surface-alt); padding: clamp(64px, 8vw, 96px) 0;">
+        <div style="max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Comments</h2>
+          <sc-if value="{{ commentsLoading }}" hint-placeholder-val="{{ true }}">
+            <p class="body" role="status" style="margin: 0; color: var(--ink-muted);">Loading comments...</p>
+          </sc-if>
+          <sc-if value="{{ commentsEmpty }}" hint-placeholder-val="{{ false }}">
+            <p class="body" style="margin: 0; color: var(--ink-muted);">No comments yet.</p>
+          </sc-if>
+          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
+            <sc-for list="{{ comments }}" as="c" hint-placeholder-count="0">
+              <li style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
+                <p class="meta" style="margin: 0; color: var(--ink-muted);">{{ c.name }} · {{ c.when }}</p>
+                <p class="body" style="margin: 0; white-space: pre-wrap;">{{ c.body }}</p>
+              </li>
+            </sc-for>
+          </ul>
+          <form onSubmit="{{ submitComment }}" novalidate="" style="display: flex; flex-direction: column; gap: 24px; border-top: 1px solid var(--line); padding-top: 32px;">
+            <h3 class="score-title" style="margin: 0;">Write a comment</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px;">
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-email" label="Email" type="email" help="Not published." value="{{ cf.email }}" error="{{ cfErr.email }}" on-change="{{ cfSet.email }}" hint-size="100%,110px"></x-import>
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-name" label="Name" value="{{ cf.name }}" error="{{ cfErr.name }}" on-change="{{ cfSet.name }}" hint-size="100%,80px"></x-import>
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-web" label="Website" type="url" help="Optional." value="{{ cf.website }}" on-change="{{ cfSet.website }}" hint-size="100%,110px"></x-import>
+            </div>
+            <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-body" label="Comment" multiline="{{ true }}" rows="{{ 4 }}" value="{{ cf.body }}" error="{{ cfErr.body }}" on-change="{{ cfSet.body }}" hint-size="100%,160px"></x-import>
+            <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" type="submit" hint-size="150px,48px">Post comment</x-import></div>
+          </form>
+        </div>
+      </section>
+
+      <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
+        <div role="dialog" aria-modal="true" aria-label="{{ lbAria }}" style="position: fixed; inset: 0; z-index: 40; background: var(--surface); display: flex; flex-direction: column; padding: clamp(16px, 3vw, 32px); gap: 16px; box-sizing: border-box;">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
+            <span class="meta" style="color: var(--ink-muted);">{{ lbCount }}</span>
+            <button type="button" ref="{{ lbCloseRef }}" onClick="{{ lbClose }}" aria-label="Close" class="mx-btn mx-btn--outline" style="padding: 0; width: 48px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+          </div>
+          <div style="flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; gap: 16px;">
+            <button type="button" onClick="{{ lbPrev }}" aria-label="Previous photo" class="mx-btn mx-btn--outline" style="padding: 0; width: 48px; flex: none;">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+            </button>
+            <figure style="margin: 0; flex: 1; max-width: 1100px; height: 100%; display: flex; flex-direction: column; gap: 12px;">
+              <div style="flex: 1; min-height: 160px; display: flex; align-items: center; justify-content: center;">
+                {{ lbImg }}
+              </div>
+              <figcaption class="small" style="color: var(--ink-muted); text-align: center;">{{ lbCaption }}</figcaption>
+            </figure>
+            <button type="button" onClick="{{ lbNext }}" aria-label="Next photo" class="mx-btn mx-btn--outline" style="padding: 0; width: 48px; flex: none;">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg>
+            </button>
+          </div>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <!-- ABOUT -->
+    <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="About" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(32px, 5vw, 64px); align-items: start;">
+          <div style="position: relative; max-width: 540px; width: 100%; aspect-ratio: 9 / 10;">
+            <div aria-hidden="true" style="position: absolute; right: 0; top: 0; width: 64%; height: 70%; background: var(--violet); border-radius: 20px;"></div>
+            <div aria-hidden="true" style="position: absolute; left: 0; bottom: 0; width: 30%; height: 30%; background: var(--surface-alt); border-radius: 20px;"></div>
+            <div style="position: absolute; left: 6%; top: 6%; width: 68%; height: 86%; z-index: 2;">
+              <image-slot id="about-portrait" shape="rounded" radius="20" placeholder="[Portrait of Madox]"></image-slot>
+            </div>
+            <div style="position: absolute; right: 0; bottom: 4%; width: 40%; height: 36%; z-index: 3; border: 8px solid var(--surface); border-radius: 20px; box-sizing: border-box; background: var(--surface);">
+              <image-slot id="about-second" shape="rounded" radius="12" placeholder="[Photo: performing]"></image-slot>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <p class="eyebrow mx-eyebrow">Composer · Vocalist · Producer</p>
+            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">About</h1>
+            <p class="body-lg" style="margin: 0; text-wrap: pretty;">A multi-disciplinary musician with a background in composition for voice and more than a decade of performance experience, interested in choral composition, vocal performance and experimental sound design.</p>
+            <p class="body" style="margin: 0; text-wrap: pretty;">Madox Terrell is a composer, vocalist and producer based in Ottawa, Ontario. He holds a Bachelor of Music from the University of Ottawa (2024), with profiles in composition and voice. Since 2017 he has composed over three hours of choral music for commissions across Ontario, and has written and produced four albums under the name Madox, with over 100,000 streams across platforms.</p>
+            <p class="body" style="margin: 0; text-wrap: pretty;">From 2018 to 2024 he was Composer-in-Residence and Vocal Coach with the Ottawa Regional Youth Choir, writing over an hour of music for its seasonal concerts. He has sung as cantor since 2016, at St. John the Evangelist Church and now St. Joseph's Parish, and teaches piano, voice and digital audio production at Rockstar Music.</p>
+            <p class="body" style="margin: 0; color: var(--ink-muted);">[Mentors and collaborators, if supplied]</p>
+            <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;">
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="outline" href="#cv" hint-size="170px,48px">Download CV (PDF)</x-import>
+              <span class="small" style="color: var(--ink-muted);">[CV link]</span>
+              <a href="mailto:madox.terrell@gmail.com" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">madox.terrell@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-reveal="" style="background: var(--surface-alt); padding: clamp(64px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
+          <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">Selected works</h2>
+          <ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line);">
+            <sc-for list="{{ works }}" as="w" hint-placeholder-count="11">
+              <li style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 4px 24px; padding: 20px 0; border-bottom: 1px solid var(--line);">
+                <span class="meta" style="color: var(--ink-muted); padding-top: 4px;">{{ w.year }}</span>
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span class="score-title" style="font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3;">{{ w.title }}</span>
+                  <span class="body" style="text-wrap: pretty;">{{ w.detail }}</span>
+                </div>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+      </section>
+
+      <section data-reveal="" style="background: var(--surface); padding: clamp(64px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 64px 48px; align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Performance</h2>
+            <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+              <sc-for list="{{ performances }}" as="p" hint-placeholder-count="6">
+                <li style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 20px; border-bottom: 1px solid var(--line);">
+                  <span class="meta" style="color: var(--ink-muted);">{{ p.when }}</span>
+                  <span class="body" style="font-weight: 600;">{{ p.who }}</span>
+                  <span class="body" style="text-wrap: pretty;">{{ p.what }}</span>
+                </li>
+              </sc-for>
+            </ul>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 48px;">
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Education</h2>
+              <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+                <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">2024</span><span class="body">Bachelor of Music, Composition and Voice profiles, University of Ottawa</span></li>
+                <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">2018</span><span class="body">Classical Piano Certificate, Grade 8, Conservatory Canada. First Class Honours.</span></li>
+                <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">2017</span><span class="body">Classical Vocal Certificate, Grade 8, Conservatory Canada. First Class Honours.</span></li>
+              </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Experience</h2>
+              <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
+                <sc-for list="{{ experience }}" as="e" hint-placeholder-count="5">
+                  <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">{{ e.when }}</span><span class="body" style="font-weight: 600;">{{ e.role }}</span><span class="body" style="text-wrap: pretty;">{{ e.detail }}</span></li>
+                </sc-for>
+              </ul>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Skills</h2>
+              <p class="body" style="margin: 0;">Composition, vocal performance, collaborative piano, choral conducting, FL Studio, Ableton, Sibelius, Finale.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- CONTACT -->
+    <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Contact" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: start;">
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Contact</h1>
+            <p class="body-lg" style="margin: 0; text-wrap: pretty;">Write about a commission, a performance, lessons or a score.</p>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span class="eyebrow mx-eyebrow">Email</span>
+              <a href="mailto:madox.terrell@gmail.com" style="font-family: var(--font-display); font-weight: 600; font-size: clamp(16px, 2vw, 22px); line-height: 1.4; overflow-wrap: anywhere;">madox.terrell@gmail.com</a>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span class="eyebrow mx-eyebrow">Social</span>
+              <div style="display: flex; gap: 24px;">
+                <a href="#instagram" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
+                <a href="#facebook" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
+              </div>
+            </div>
+            <p class="small" style="margin: 0; color: var(--ink-muted);">Replies within [response time].</p>
+            <div style="position: relative; width: 100%; max-width: 460px; aspect-ratio: 4 / 3; margin-top: 16px;">
+              <div aria-hidden="true" style="position: absolute; right: 0; bottom: 0; width: 80%; height: 80%; background: var(--surface-alt); border-radius: 20px;"></div>
+              <div style="position: absolute; left: 0; top: 0; width: 84%; height: 84%; z-index: 2;">
+                <image-slot id="contact-photo" shape="rounded" radius="20" placeholder="[Photo: Madox at work]"></image-slot>
+              </div>
+            </div>
+          </div>
+          <div style="background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 4vw, 48px);">
+            <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
+              <div role="status" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+                <p class="score-title" style="margin: 0; display: flex; align-items: center; gap: 12px;"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Message sent</p>
+                <p class="body" style="margin: 0;">Thank you, {{ ct.name }}. You will get a reply at {{ ct.email }} within <span style="color: var(--ink-muted);">[response time]</span>.</p>
+                <button type="button" onClick="{{ resetContact }}" class="mx-btn mx-btn--outline">Send another message</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ contactForm }}" hint-placeholder-val="{{ true }}">
+              <form onSubmit="{{ submitContact }}" novalidate="" style="display: flex; flex-direction: column; gap: 24px;">
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="ct-name" label="Name" value="{{ ct.name }}" error="{{ ctErr.name }}" on-change="{{ ctSet.name }}" hint-size="100%,80px"></x-import>
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="ct-email" label="Email" type="email" value="{{ ct.email }}" error="{{ ctErr.email }}" on-change="{{ ctSet.email }}" hint-size="100%,80px"></x-import>
+                <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
+                  <legend class="mx-field__label" style="padding: 0; margin-bottom: 12px;">Subject</legend>
+                  <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                    <sc-for list="{{ subjectChips }}" as="c" hint-placeholder-count="5">
+                      <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Chip" selected="{{ c.selected }}" on-click="{{ c.pick }}" hint-size="110px,44px">{{ c.label }}</x-import>
+                    </sc-for>
+                  </div>
+                  <sc-if value="{{ ctErr.subject }}" hint-placeholder-val="{{ false }}">
+                    <p class="mx-field__note mx-field__note--error"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5.5M12 16.5v.01"></path></svg>Error: {{ ctErr.subject }}</p>
+                  </sc-if>
+                </fieldset>
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="ct-msg" label="Message" multiline="{{ true }}" rows="{{ 6 }}" value="{{ ct.message }}" error="{{ ctErr.message }}" on-change="{{ ctSet.message }}" hint-size="100%,200px"></x-import>
+                <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" type="submit" hint-size="150px,48px">Send message</x-import></div>
+              </form>
+            </sc-if>
+          </div>
+        </div>
+      </section>
+    </sc-if>
+
+    <!-- POLICIES -->
+    <sc-if value="{{ isPolicy }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="Policy" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
+        <article style="max-width: 760px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 24px;">
+          <h1 class="display-lg" style="margin: 0; font-size: clamp(34px, 5vw, 52px); line-height: 1.12;">{{ policyTitle }}</h1>
+          <p class="meta" style="margin: 0; color: var(--ink-muted);">Last updated [date]</p>
+          <p class="body" style="margin: 0; color: var(--ink-muted);">[policy text]</p>
+          <h2 class="score-title" style="margin: 16px 0 0;">[Section heading]</h2>
+          <p class="body" style="margin: 0; color: var(--ink-muted);">[policy text]</p>
+          <h2 class="score-title" style="margin: 16px 0 0;">Questions</h2>
+          <p class="body" style="margin: 0;">Write to <a href="mailto:madox.terrell@gmail.com">madox.terrell@gmail.com</a>.</p>
+        </article>
+      </section>
+    </sc-if>
+
+    <!-- CONTACT BAND (all pages except contact, cart, checkout) -->
+    <sc-if value="{{ showBand }}" hint-placeholder-val="{{ true }}">
+      <section data-reveal="" style="background: {{ bandBg }}; padding: clamp(64px, 8vw, 96px) 0;">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
+          <h2 class="display-xl" style="margin: 0; font-size: clamp(32px, 6.5vw, 72px); line-height: 1.08;">Commission a new work</h2>
+          <p class="body-lg" style="margin: 0; max-width: 640px; color: var(--ink-muted);">[One line on commissions: forces, timelines, how to start.]</p>
+          <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/contact" hint-size="150px,48px">Get in touch</x-import>
+        </div>
+      </section>
+    </sc-if>
+  </main>
+
+  <footer style="background: var(--surface-alt); border-top: 1px solid var(--line);">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 32px clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px 32px;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;">
+        <span class="small" style="color: var(--ink-muted);">© 2026 Madox Terrell</span>
+        <a href="mailto:madox.terrell@gmail.com" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">madox.terrell@gmail.com</a>
+      </div>
+      <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 24px;">
+        <a href="#facebook" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
+        <a href="#instagram" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
+        <a href="#/privacy" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Privacy</a>
+        <a href="#/refund" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Refund Policy</a>
+      </nav>
+    </div>
+  </footer>
+
+  {{ curtain }}
+
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 30; max-width: calc(100vw - 32px); box-sizing: border-box; background: var(--ink); color: var(--surface); border-radius: 999px; padding: 8px 8px 8px 24px; display: flex; align-items: center; gap: 16px;">
+      <span class="label">Added to cart: {{ toast }}</span>
+      <a href="#/cart" class="mx-btn" style="background: var(--surface); color: var(--ink); min-height: 44px;">View cart</a>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;transition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bars&quot;,&quot;fade&quot;,&quot;none&quot;],&quot;default&quot;:&quot;bars&quot;,&quot;tsType&quot;:&quot;'bars'|'fade'|'none'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;audioSrc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Audio&quot;}}">
+const SCORES = [
+  { id: 'may', title: 'May', year: 2024, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "May"', desc: 'Setting of Christina Rossetti\'s "May", submitted to the Ruth Watson Henderson Choral Composition Competition. Composed 2024.' },
+  { id: 'remember', title: 'Remember', year: 2021, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
+  { id: 'the-buried-life', title: 'The Buried Life', year: 2019, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Selected for the Amadeus Choir of Greater Toronto Choral Composers Workshop.' },
+  { id: 'if-i-might-see-another-spring', title: 'If I Might See Another Spring', year: 2020, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti', desc: 'Christina Rossetti setting for virtual choir, premiered by the Ottawa Regional Youth Choir in 2020.' },
+  { id: 'de-profundis', title: 'De Profundis', year: 2017, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Composed 2017.' },
+  { id: 'inferno', title: 'Inferno', year: 2024, instr: 'Choir and string quartet', cat: 'Choir and strings', text: 'Dante Alighieri, Inferno (excerpts)', dur: 'About one hour', desc: 'One-hour setting of excerpts from Dante\'s Inferno for choir and string quartet. Composed 2024.' },
+  { id: 'the-key-note', title: 'The Key-Note', year: 2022, instr: 'Voice, viola and piano', cat: 'Solo voice', text: 'Christina Rossetti, "The Key-Note"', desc: 'Setting of Christina Rossetti\'s "The Key-Note" for solo voice, solo viola and piano. Composed 2022.' },
+  { id: 'halfway-there', title: 'Halfway There', year: 2018, instr: 'Piano', cat: 'Piano', desc: 'Piano composition, selected for the Canadian Music Showcase composition award. Composed 2018.' }
+];
+const PHOTOS = [
+  { src: 'assets/madox-side-profile.jpg', alt: 'Madox Terrell in profile, black and white', caption: 'Madox Terrell' },
+  { src: 'assets/breaking-point-cover.jpg', alt: 'Breaking Point album cover', caption: 'Breaking Point, Madox (2023)' },
+  { src: 'assets/madox-studio.jpg', alt: 'Studio portrait of Madox Terrell', caption: 'Madox Terrell' },
+  { src: 'assets/remember-score-p1.png', alt: 'First page of the score of Remember', caption: 'Remember, for SATB chorus a cappella' },
+  { src: 'assets/downbeat-cover.jpg', alt: 'DownBeat: The OST cover', caption: 'DownBeat: The OST' },
+  { src: 'assets/slot-home-electronic.webp', alt: 'Madox Terrell performing electronic music on stage', caption: 'Madox Terrell, live electronics' },
+  { src: 'assets/madox-portrait-blue.jpg', alt: 'Portrait of Madox Terrell', caption: 'Madox Terrell' },
+  { src: 'assets/slot-about-second.webp', alt: 'Madox Terrell singing with a choir', caption: 'Madox Terrell with choir' }
+];
+const CATS = ['Choir', 'Choir and strings', 'Solo voice', 'Piano'];
+const SUBJECTS = ['Commission', 'Performance', 'Lessons', 'Scores', 'Other'];
+const PAGES = {
+  home: ['Madox Terrell, composer, vocalist and producer', 'Choral and electronic music, written, sung and produced in Ottawa.'],
+  scores: ['Scores | Madox Terrell', 'PDF scores for choirs, voice and piano by Madox Terrell. Digital download, instant delivery.'],
+  cart: ['Cart | Madox Terrell', 'Your cart.'],
+  checkout: ['Checkout | Madox Terrell', 'Checkout. PDF delivered instantly after payment.'],
+  gallery: ['Gallery | Madox Terrell', 'Photos of Madox Terrell.'],
+  about: ['About | Madox Terrell', 'Biography, works, performance and education of Ottawa composer Madox Terrell.'],
+  contact: ['Contact | Madox Terrell', 'Contact Madox Terrell about commissions, performances, lessons and scores.'],
+  privacy: ['Privacy | Madox Terrell', 'Privacy policy.'],
+  refund: ['Refund Policy | Madox Terrell', 'Refund policy for PDF score purchases.']
+};
+const WORKS = [
+  ['2024', 'Inferno', 'One-hour setting of excerpts from Dante\'s Inferno for choir and string quartet.'],
+  ['2024', 'May', 'Setting of Christina Rossetti\'s "May", submitted to the Ruth Watson Henderson Choral Composition Competition.'],
+  ['2023', 'Breaking Point', '30-minute electronic and acoustic album, over 33,000 plays.'],
+  ['2022', 'The Key-Note', 'Setting of Rossetti\'s "The Key-Note" for solo voice, solo viola and piano.'],
+  ['2021', 'Downbeat', 'Electronic score for a music-based video game.'],
+  ['2021', 'Lost in Translation', 'Multimedia collaborative composition with Kai Leung, commissioned by the Orpheus Choir of Toronto. Selected by INTERKULTUR and the World Choir Council for international distribution; over 70,000 views on social media.'],
+  ['2021', 'Remember', 'Setting of Rossetti\'s "Remember", commissioned by Modern Sound Collective, published 2024.'],
+  ['2020', 'If I Might See Another Spring', 'Rossetti setting for virtual choir, premiered by the Ottawa Regional Youth Choir.'],
+  ['2019', 'The Buried Life', 'Premiered by the Ottawa Regional Youth Choir; selected for the Amadeus Choir of Greater Toronto Choral Composers Workshop.'],
+  ['2018', 'Halfway There', 'Piano composition, selected for the Canadian Music Showcase composition award.'],
+  ['2017', 'De Profundis', 'Choral work premiered by the Ottawa Regional Youth Choir.']
+].map(([year, title, detail]) => ({ year, title, detail }));
+const PERF = [
+  ['2018 to present', 'Capital Chamber Choir', 'Chorister in Handel\'s Messiah at the National Arts Centre (2022, 2024) and Mozart\'s Requiem at the NAC (2017).'],
+  ['2014 to 2024', 'Ottawa Regional Youth Choir', 'Chorister in Britten\'s War Requiem with Alexander Shelley, NAC, 9 November 2018.'],
+  ['2017, 2018', 'Ewashko Singers', 'Beethoven\'s Symphony No. 9 with the NAC Orchestra (2017); The Best of Broadway with Jack Everly and the NAC Orchestra (2018).'],
+  ['2017 to 2019', 'Ontario Youth Choir', 'Soloist and chorister.'],
+  ['2018 to 2024', 'Soloist', 'Brahms\' Requiem with the Pembroke Community Choir (2024); Governor General\'s Literary Awards and History Awards (2018, 2022, 2023); Masetto in Don Giovanni, University of Ottawa Opera Company (2019).'],
+  ['2024', 'Modern Sound Collective and Senza Nomine', 'Soloist and chorister, Cultural Landscapes, PODIUM Festival and Conference; soloist and chorister with Senza Nomine.']
+].map(([when, who, what]) => ({ when, who, what }));
+const EXP = [
+  ['2017 to present', 'Composer, vocalist and producer (freelance)', 'Over three hours of choral music for commissions across Ontario. Four albums written and produced, over 100,000 streams.'],
+  ['2018 to 2024', 'Composer-in-Residence and Vocal Coach, Ottawa Regional Youth Choir', 'Composition lessons and weekly sectionals; over an hour of music for the choir\'s seasonal concerts.'],
+  ['2016 to present', 'Cantor', 'St. John the Evangelist Church (2016 to 2022) and St. Joseph\'s Parish (2022 to present). Composed and performed an original antiphon at Easter masses.'],
+  ['2024 to present', 'Music teacher, Rockstar Music', 'Piano, voice and digital audio production lessons.'],
+  ['2020 to 2021', 'Audio engineer', 'Modern Sound Collective: mixed and mastered Katerina Gimon\'s The Elements (over 11,000 YouTube views). Orpheus Choir of Toronto: mixed and mastered vocal parts and added electronic elements in FL Studio.']
+].map(([when, role, detail]) => ({ when, role, detail }));
+
+function parseHash() {
+  const h = (window.location.hash || '').replace(/^#\/?/, '');
+  if (!h || !/^[a-z]/.test(h)) return { page: 'home' };
+  const [page, id] = h.split('/');
+  if (page === 'score' && SCORES.find(s => s.id === id)) return { page: 'score', id };
+  return PAGES[page] ? { page } : { page: 'home' };
+}
+
+class Component extends DCLogic {
+  state = {
+    route: parseHash(), phase: 'idle', dest: '', enter: true, enterAnim: true, w: window.innerWidth, menuOpen: false,
+    cart: [], toast: null, justAdded: null, filters: [],
+    lb: -1, commentsLoading: true, comments: [],
+    cf: { email: '', name: '', website: '', body: '' }, cfErr: {},
+    ct: { name: '', email: '', subject: '', message: '' }, ctErr: {}, contactSent: false
+  };
+  lbCloseRef = React.createRef();
+
+  componentDidMount() {
+    this.reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onHash = () => {
+      const h = window.location.hash;
+      if (h && !h.startsWith('#/')) return;
+      const next = parseHash();
+      const style = this.props.transition ?? 'bars';
+      if (this.reduce || style === 'none') { this.setRoute(next); return; }
+      clearTimeout(this.fadeT); clearTimeout(this.idleT);
+      if (style === 'fade') {
+        this.setState({ enter: false, enterAnim: true });
+        this.fadeT = setTimeout(() => { this.setRoute(next); requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ enter: true }))); }, 220);
+        return;
+      }
+      const label = next.page === 'score' ? SCORES.find(x => x.id === next.id).title : (PAGES[next.page][0].split(' | ')[0].split(',')[0]);
+      this.setState({ phase: 'cover', dest: label });
+      this.fadeT = setTimeout(() => {
+        this.setState({ enter: false, enterAnim: false });
+        this.setRoute(next);
+        this.setState({ phase: 'reveal' });
+        requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ enter: true, enterAnim: true })));
+        this.idleT = setTimeout(() => this.setState({ phase: 'idle' }), 680);
+      }, 640);
+    };
+    this.onResize = () => this.setState({ w: window.innerWidth });
+    this.onKey = (e) => {
+      if (this.state.lb < 0) return;
+      if (e.key === 'Escape') this.closeLb();
+      else if (e.key === 'ArrowRight') this.stepLb(1);
+      else if (e.key === 'ArrowLeft') this.stepLb(-1);
+    };
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+    this.afterRoute();
+    requestAnimationFrame(() => this.forceUpdate());
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.forceUpdate());
+  }
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    if (this.onScrollReveal) { window.removeEventListener('scroll', this.onScrollReveal); window.removeEventListener('resize', this.onScrollReveal); }
+  }
+  setRoute(route) {
+    window.scrollTo(0, 0);
+    this.setState({ route, menuOpen: false, justAdded: null, lb: -1 }, () => this.afterRoute());
+  }
+  openLb(i) {
+    this.setState({ lb: i }, () => setTimeout(() => { const b = this.lbCloseRef.current; if (b) b.focus(); }, 0));
+  }
+  afterRoute() {
+    const meta = PAGES[this.state.route.page] || PAGES.home;
+    let title = meta[0], desc = meta[1];
+    if (this.state.route.page === 'score') {
+      const s = SCORES.find(x => x.id === this.state.route.id);
+      title = s.title + ' (PDF score) | Madox Terrell'; desc = s.desc;
+    }
+    const apply = () => {
+      document.title = title;
+      let m = document.querySelector('meta[name="description"]');
+      if (!m) { m = document.createElement('meta'); m.setAttribute('name', 'description'); document.head.appendChild(m); }
+      m.setAttribute('content', desc);
+    };
+    apply(); setTimeout(apply, 50);
+    if (this.state.route.page === 'gallery') {
+      this.setState({ commentsLoading: true });
+      clearTimeout(this.loadT);
+      this.loadT = setTimeout(() => this.setState({ commentsLoading: false }), 900);
+    }
+    setTimeout(() => this.setupReveal(), 30);
+  }
+  setupReveal() {
+    if (this.reduce) return;
+    if (!this.onScrollReveal) {
+      let q = false;
+      this.onScrollReveal = () => { if (q) return; q = true; requestAnimationFrame(() => { q = false; this.revealVisible(); }); };
+      window.addEventListener('scroll', this.onScrollReveal, { passive: true });
+      window.addEventListener('resize', this.onScrollReveal);
+    }
+    const main = document.getElementById('main');
+    if (!main) return;
+    const sel = 'h1, h2, h3, p, dl, ul > li, ol > li, article, image-slot, [data-reveal-item]';
+    const all = Array.from(main.querySelectorAll(sel)).filter(el => !el.closest('[role="dialog"], [data-marquee], form') && !el.hasAttribute('data-rv'));
+    const set = new Set(all);
+    all.forEach(el => {
+      for (let p = el.parentElement; p && p !== main; p = p.parentElement) if (set.has(p)) return;
+      el.setAttribute('data-rv', '');
+      const img = el.tagName === 'IMAGE-SLOT';
+      el.style.opacity = '0';
+      el.style.transform = img ? 'scale(1.04)' : 'translateY(18px)';
+      el.style.willChange = 'opacity, transform';
+      el.style.transition = img ? 'opacity 900ms ease, transform 1200ms cubic-bezier(.2,.7,.2,1)' : 'opacity 600ms ease, transform 700ms cubic-bezier(.2,.7,.2,1)';
+    });
+    requestAnimationFrame(() => this.revealVisible());
+    clearTimeout(this.revealSafety);
+    this.revealSafety = setTimeout(() => this.revealVisible(), 600);
+  }
+  revealVisible() {
+    const main = document.getElementById('main');
+    if (!main) return;
+    const vh = window.innerHeight;
+    let n = 0;
+    main.querySelectorAll('[data-rv]').forEach(el => {
+      if (el.style.opacity !== '0') return;
+      const r = el.getBoundingClientRect();
+      if (r.top > vh * 0.94 || r.bottom < 0) return;
+      el.style.transitionDelay = Math.min(n++ * 70, 420) + 'ms';
+      el.style.opacity = '1'; el.style.transform = 'none';
+      setTimeout(() => { el.style.transition = ''; el.style.transitionDelay = ''; el.style.transform = ''; el.style.willChange = ''; }, 1700);
+    });
+  }
+  go(path) { window.location.hash = '#/' + path; }
+  add(id) {
+    const s = SCORES.find(x => x.id === id);
+    this.setState(st => ({ cart: st.cart.includes(id) ? st.cart : [...st.cart, id], toast: s.title, justAdded: id }));
+    clearTimeout(this.toastT);
+    this.toastT = setTimeout(() => this.setState({ toast: null }), 4000);
+  }
+  remove(id) { this.setState(st => ({ cart: st.cart.filter(x => x !== id) })); }
+  closeLb() { this.setState({ lb: -1 }); }
+  stepLb(d) { const n = PHOTOS.length; this.setState(st => ({ lb: (st.lb + d + n) % n })); }
+  setter(form, key) { return (e) => { const v = e.target.value; this.setState(st => ({ [form]: { ...st[form], [key]: v } })); }; }
+  cardFor(s) {
+    return { ...s, href: '#/score/' + s.id, meta: 'PDF · [skill level] · ' + s.year, price: '[price] CAD', onAdd: () => this.add(s.id) };
+  }
+
+  curtainEl() {
+    const { phase, dest } = this.state, n = 12, h = React.createElement;
+    const bars = Array.from({ length: n }, (_, i) => h('div', { key: i, style: {
+      flex: 1, height: '100%',
+      background: i % 5 === 2 ? 'var(--violet)' : i % 7 === 4 ? 'var(--accent)' : 'var(--surface-alt)',
+      transform: phase === 'cover' ? 'scaleY(1)' : 'scaleY(0)',
+      transformOrigin: phase === 'reveal' ? 'top' : 'bottom',
+      transition: phase === 'idle' ? 'none' : 'transform 360ms cubic-bezier(.7,0,.25,1) ' + (phase === 'cover' ? i * 22 : (n - 1 - i) * 22) + 'ms'
+    } }));
+    const label = h('div', { style: {
+      position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)',
+      background: 'var(--surface)', color: 'var(--ink)', borderRadius: 999, padding: '14px 28px',
+      fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(20px, 3vw, 32px)', whiteSpace: 'nowrap',
+      opacity: phase === 'cover' ? 1 : 0, transition: phase === 'cover' ? 'opacity 200ms 320ms' : 'opacity 120ms'
+    } }, dest);
+    return h('div', { 'aria-hidden': true, style: { position: 'fixed', inset: 0, zIndex: 60, display: 'flex', pointerEvents: phase === 'idle' ? 'none' : 'auto' } }, bars, label);
+  }
+  marqueeEl() {
+    const h = React.createElement;
+    const items = ['National Arts Centre', 'Ottawa Regional Youth Choir', 'Orpheus Choir of Toronto', 'Capital Chamber Choir', 'Modern Sound Collective', 'PODIUM Festival', 'University of Ottawa Opera Company', 'Ontario Youth Choir', 'Ewashko Singers', 'Senza Nomine'];
+    const run = (k) => items.map((t, i) => h(React.Fragment, { key: k + i },
+      h('span', { style: { fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(18px, 2vw, 24px)', color: 'var(--ink)', whiteSpace: 'nowrap' } }, t),
+      h('span', { 'aria-hidden': true, style: { flex: 'none', width: 8, height: 24 + (i % 3) * 8, borderRadius: 999, background: i % 2 ? 'var(--violet)' : 'var(--accent)' } })));
+    return h('div', { style: { overflow: 'hidden' } },
+      h('div', { 'data-marquee': '', style: { display: 'flex', alignItems: 'center', gap: 32, width: 'max-content', paddingLeft: 32, animation: 'mx-marquee 60s linear infinite' } }, run('a'), run('b')));
+  }
+  linkRef(l) {
+    this.refCbs = this.refCbs || {};
+    this.linkEls = this.linkEls || {};
+    return this.refCbs[l] || (this.refCbs[l] = (el) => { this.linkEls[l] = el; });
+  }
+  indicator(active) {
+    const key = this.state.hoverNav || active;
+    const el = key && this.linkEls && this.linkEls[key];
+    if (!el) { this.lastInd = this.lastInd || { left: 0, width: 0 }; return { ...this.lastInd, opacity: 0, transition: 'opacity 200ms' }; }
+    const first = !this.lastInd || this.lastInd.width === 0;
+    this.lastInd = { left: el.offsetLeft, width: el.offsetWidth };
+    return { ...this.lastInd, opacity: 1, transition: first || this.reduce ? 'opacity 200ms' : 'left 320ms cubic-bezier(.2,.7,.2,1), width 320ms cubic-bezier(.2,.7,.2,1), opacity 200ms' };
+  }
+  renderVals() {
+    const st = this.state;
+    const page = st.route.page;
+    const isMobile = st.w < 760;
+    const activeNav = { home: 'Home', scores: 'Scores', score: 'Scores', gallery: 'Gallery', about: 'About', contact: 'Contact' }[page];
+    const navLinks = ['Home', 'Scores', 'Gallery', 'About', 'Contact'];
+    const count = st.cart.length;
+
+    const s = page === 'score' ? SCORES.find(x => x.id === st.route.id) : SCORES[0];
+    const inCart = st.cart.includes(s.id);
+    const row = (k, v, fallback) => ({ k, v: v || fallback, color: v ? 'var(--ink)' : 'var(--ink-muted)' });
+    const score = {
+      ...s, price: '[price] CAD', onAdd: () => this.add(s.id), justAdded: st.justAdded === s.id,
+      addLabel: inCart ? 'Add again' : 'Add to cart',
+      rows: [row('Format', 'PDF, instant download'), row('Skill level', null, '[skill level]'), row('Instrumentation', s.instr.includes('[') ? null : s.instr, s.instr), row('Duration', s.dur, '[duration]'), row('Text', s.text, '[text/poet]')]
+    };
+
+    const visible = SCORES.filter(x => !st.filters.length || st.filters.includes(x.cat));
+    const cartLines = st.cart.map(id => SCORES.find(x => x.id === id)).map(x => ({
+      ...x, href: '#/score/' + x.id, price: '[price] CAD', remove: () => this.remove(x.id), removeLabel: 'Remove ' + x.title + ' from cart'
+    }));
+
+    const cfSubmit = (e) => {
+      e.preventDefault();
+      const f = st.cf, err = {};
+      if (!f.email.includes('@')) err.email = 'enter an email address, for example name@example.com.';
+      if (!f.name.trim()) err.name = 'enter your name.';
+      if (!f.body.trim()) err.body = 'write a comment.';
+      if (Object.keys(err).length) { this.setState({ cfErr: err }); return; }
+      const when = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+      this.setState(x => ({ comments: [...x.comments, { name: f.name.trim(), body: f.body.trim(), when }], cf: { email: '', name: '', website: '', body: '' }, cfErr: {} }));
+    };
+    const ctSubmit = (e) => {
+      e.preventDefault();
+      const f = st.ct, err = {};
+      if (!f.name.trim()) err.name = 'enter your name.';
+      if (!f.email.includes('@')) err.email = 'enter an email address, for example name@example.com.';
+      if (!f.subject) err.subject = 'choose a subject.';
+      if (!f.message.trim()) err.message = 'write a message.';
+      if (Object.keys(err).length) { this.setState({ ctErr: err }); return; }
+      this.setState({ ctErr: {}, contactSent: true });
+    };
+
+    return {
+      isMobile, isDesktop: !isMobile,
+      mainOpacity: st.enter ? 1 : 0, mainTransform: st.enter ? (st.phase === 'idle' ? 'none' : 'translateY(0px)') : 'translateY(24px)',
+      lbImg: st.lb >= 0 ? React.createElement('img', { key: st.lb, src: PHOTOS[st.lb].src, alt: PHOTOS[st.lb].alt, style: { display: 'block', maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', borderRadius: 12 } }) : null,
+      mainTransition: st.enterAnim ? 'opacity 500ms ease, transform 600ms cubic-bezier(.2,.7,.2,1)' : 'none',
+      curtain: this.curtainEl(), marquee: this.marqueeEl(),
+      audioSrc: this.props.audioSrc || '',
+      sideOffset: st.w < 1000 ? 0 : 140,
+      bandBg: ['home', 'score', 'gallery'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
+      navLinks, activeNav, cartCount: count,
+      cartAria: 'Cart, ' + count + (count === 1 ? ' item' : ' items'),
+      navTo: (l) => this.go(l.toLowerCase()), goCart: () => this.go('cart'),
+      menuOpen: st.menuOpen, menuOpenStr: st.menuOpen ? 'true' : 'false',
+      menuIconPath: st.menuOpen ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16',
+      toggleMenu: () => this.setState(x => ({ menuOpen: !x.menuOpen })),
+      deskNav: navLinks.map(l => ({ label: l, href: '#/' + l.toLowerCase(), ref: this.linkRef(l), current: l === activeNav ? 'page' : undefined, hover: () => this.state.hoverNav !== l && this.setState({ hoverNav: l }) })),
+      navLeave: () => this.setState({ hoverNav: null }),
+      ind: this.indicator(activeNav),
+      mobileNav: navLinks.map(l => ({ label: l, href: '#/' + l.toLowerCase(), current: l === activeNav ? 'page' : undefined, underline: l === activeNav ? 'var(--accent)' : 'transparent' })),
+
+      isHome: page === 'home', isScores: page === 'scores', isScore: page === 'score', isCart: page === 'cart',
+      isCheckout: page === 'checkout', isGallery: page === 'gallery', isAbout: page === 'about', isContact: page === 'contact',
+      isPolicy: page === 'privacy' || page === 'refund', policyTitle: page === 'refund' ? 'Refund Policy' : 'Privacy',
+      showBand: ['home', 'scores', 'score', 'gallery', 'about'].includes(page),
+
+      scrollToListen: (e) => { e.preventDefault(); const el = document.getElementById('listen'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: this.reduce ? 'auto' : 'smooth' }); },
+      featuredScores: [SCORES[0], SCORES[1], SCORES[2]].map((x, i) => ({ ...this.cardFor(x), offset: st.w < 1100 ? 0 : [0, 64, 128][i] })),
+      visibleScores: visible.map(x => this.cardFor(x)),
+      resultCount: visible.length + (visible.length === 1 ? ' score' : ' scores'),
+      filterChips: CATS.map(c => ({ label: c, selected: st.filters.includes(c), toggle: () => this.setState(x => ({ filters: x.filters.includes(c) ? x.filters.filter(y => y !== c) : [...x.filters, c] })) })),
+      score,
+
+      cartEmpty: count === 0, cartHasItems: count > 0, cartLines,
+      cartItemsLabel: count + (count === 1 ? ' item' : ' items'),
+      toast: st.toast,
+
+      photos: PHOTOS.map((p, i) => ({ ...p, aria: 'Open photo: ' + p.alt, open: () => this.openLb(i) })),
+      lbOpen: st.lb >= 0, lbSrc: (PHOTOS[st.lb] || PHOTOS[0]).src, lbAlt: (PHOTOS[st.lb] || PHOTOS[0]).alt, lbCaption: (PHOTOS[st.lb] || PHOTOS[0]).caption,
+      lbCount: (st.lb + 1) + ' / ' + PHOTOS.length, lbAria: 'Photo ' + (st.lb + 1) + ' of ' + PHOTOS.length,
+      lbClose: () => this.closeLb(), lbPrev: () => this.stepLb(-1), lbNext: () => this.stepLb(1), lbCloseRef: this.lbCloseRef,
+      commentsLoading: st.commentsLoading, commentsEmpty: !st.commentsLoading && st.comments.length === 0,
+      comments: st.commentsLoading ? [] : st.comments,
+      cf: st.cf, cfErr: st.cfErr, submitComment: cfSubmit,
+      cfSet: { email: this.setter('cf', 'email'), name: this.setter('cf', 'name'), website: this.setter('cf', 'website'), body: this.setter('cf', 'body') },
+
+      works: WORKS, performances: PERF, experience: EXP,
+
+      ct: st.ct, ctErr: st.ctErr, contactSent: st.contactSent, contactForm: !st.contactSent, submitContact: ctSubmit,
+      ctSet: { name: this.setter('ct', 'name'), email: this.setter('ct', 'email'), message: this.setter('ct', 'message') },
+      subjectChips: SUBJECTS.map(l => ({ label: l, selected: st.ct.subject === l, pick: () => this.setState(x => ({ ct: { ...x.ct, subject: l } })) })),
+      resetContact: () => this.setState({ contactSent: false, ct: { name: '', email: '', subject: '', message: '' } })
+    };
+  }
+}
+</script>
 </body>
 </html>

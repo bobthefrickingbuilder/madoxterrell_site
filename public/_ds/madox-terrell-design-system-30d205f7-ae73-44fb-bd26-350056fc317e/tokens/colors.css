@@ -1,0 +1,52 @@
+/* Night is the default theme; Day is the light variant. */
+:root, [data-theme="night"] {
+  --surface: #313d5a;
+  --surface-alt: #264027;
+  --ink: #d5ecd4;
+  --ink-muted: #a1b0ab;
+  --accent: #6d9dc5;
+  --violet: #73628a;
+  --action: #944654;
+  --line: #6b6054;
+  --on-fill: #f2f9f1;
+  --ink-on-light: #264027;
+  --panel-light: #d5ecd4;
+  --focus: #d5ecd4;
+  --shadow-cover: 0 14px 32px rgba(0, 0, 0, 0.35);
+}
+[data-theme="day"] {
+  --surface: #d5ecd4;
+  --surface-alt: #f2f9f1;
+  --ink: #264027;
+  --ink-muted: #6b6054;
+  --accent: #944654;
+  --violet: #73628a;
+  --action: #944654;
+  --line: #a1b0ab;
+  --on-fill: #f2f9f1;
+  --ink-on-light: #264027;
+  --panel-light: #f2f9f1;
+  --focus: #264027;
+}
+:root {
+  /* raw palette (Night values) */
+  --navy: #313d5a;
+  --forest: #264027;
+  --mint: #d5ecd4;
+  --sage: #a1b0ab;
+  --sky: #6d9dc5;
+  --violet-raw: #73628a;
+  --wine: #944654;
+  --taupe: #6b6054;
+  --paper: #f2f9f1;
+  /* semantic aliases */
+  --text-body: var(--ink);
+  --text-muted: var(--ink-muted);
+  --text-on-fill: var(--on-fill);
+  --surface-page: var(--surface);
+  --surface-card: var(--surface-alt);
+  --fill-primary: var(--action);
+  --fill-feature: var(--violet);
+  --border-hairline: var(--line);
+  --border-field: var(--ink-muted);
+}
