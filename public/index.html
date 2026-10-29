@@ -24,8 +24,9 @@
     a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 4px; }
     a:hover { color: var(--on-fill); }
     :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
-    .footer-credit { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink-muted); text-decoration: none; }
-    .footer-credit:hover, .footer-credit:focus-visible { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); }
+    .footer-credit { display: inline-flex; align-items: center; gap: 0.25em; min-height: 44px; color: var(--ink-muted); }
+    .footer-credit a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration-color: currentColor; text-decoration-thickness: 1px; }
+    .footer-credit a:hover { color: var(--ink); }
   </style>
 </helmet>
 
@@ -632,7 +633,7 @@
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px;">
         <span class="small" style="color: var(--ink-muted);">© 2026 Madox Terrell</span>
         <a href="mailto:madox.terrell@gmail.com" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">madox.terrell@gmail.com</a>
-        <a href="https://www.matthewmenardmusic.com/alterations" target="_blank" rel="noopener" class="small footer-credit">Site by Matthew Menard</a>
+        <span class="small footer-credit">Website by <a href="https://www.matthewmenardmusic.com/commissions" target="_blank" rel="noopener">Matthew Menard</a></span>
       </div>
       <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 24px;">
         <a href="#facebook" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
