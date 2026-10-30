@@ -130,7 +130,7 @@
           </div>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 32px; align-items: start;">
             <article style="position: relative; background: var(--violet); color: var(--on-fill); border-radius: 20px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 20px; margin-top: 40px;">
-              <a href="#/score/remember" aria-label="Remember, first page of score" style="position: absolute; top: -40px; right: clamp(16px, 4vw, 40px); width: clamp(110px, 14vw, 150px); aspect-ratio: 8.5 / 11; background: var(--panel-light); border-radius: 12px; box-shadow: var(--shadow-cover); overflow: hidden; display: block;">
+              <a href="https://modernsoundcollective.ca/store/msc0010-remember" aria-label="Remember, first page of score" style="position: absolute; top: -40px; right: clamp(16px, 4vw, 40px); width: clamp(110px, 14vw, 150px); aspect-ratio: 8.5 / 11; background: var(--panel-light); border-radius: 12px; box-shadow: var(--shadow-cover); overflow: hidden; display: block;">
                 <img src="assets/remember-score-p1.png" alt="" style="position: absolute; display: block; width: 200%; height: auto; max-width: none; left: -50%; top: -52.6%;">
               </a>
               <p class="eyebrow" style="margin: 0;">Choral</p>
@@ -657,7 +657,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;transition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bars&quot;,&quot;fade&quot;,&quot;none&quot;],&quot;default&quot;:&quot;bars&quot;,&quot;tsType&quot;:&quot;'bars'|'fade'|'none'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;audioSrc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Audio&quot;}}">
 const SCORES = [
   { id: 'may', title: 'May', year: 2024, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "May"', desc: 'Setting of Christina Rossetti\'s "May", submitted to the Ruth Watson Henderson Choral Composition Competition. Composed 2024.' },
-  { id: 'remember', title: 'Remember', year: 2021, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
+  { id: 'remember', url: 'https://modernsoundcollective.ca/store/msc0010-remember', title: 'Remember', year: 2021, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
   { id: 'the-buried-life', title: 'The Buried Life', year: 2019, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Selected for the Amadeus Choir of Greater Toronto Choral Composers Workshop.' },
   { id: 'if-i-might-see-another-spring', title: 'If I Might See Another Spring', year: 2020, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti', desc: 'Christina Rossetti setting for virtual choir, premiered by the Ottawa Regional Youth Choir in 2020.' },
   { id: 'de-profundis', title: 'De Profundis', year: 2017, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Composed 2017.' },
@@ -719,7 +719,9 @@ function parseHash() {
   const h = (window.location.hash || '').replace(/^#\/?/, '');
   if (!h || !/^[a-z]/.test(h)) return { page: 'home' };
   const [page, id] = h.split('/');
-  if (page === 'score' && SCORES.find(s => s.id === id)) return { page: 'score', id };
+  const score = page === 'score' && SCORES.find(s => s.id === id);
+  if (score && score.url) { window.location.replace(score.url); return { page: 'home' }; }
+  if (score) return { page: 'score', id };
   return PAGES[page] ? { page } : { page: 'home' };
 }
 
@@ -857,7 +859,7 @@ class Component extends DCLogic {
   stepLb(d) { const n = PHOTOS.length; this.setState(st => ({ lb: (st.lb + d + n) % n })); }
   setter(form, key) { return (e) => { const v = e.target.value; this.setState(st => ({ [form]: { ...st[form], [key]: v } })); }; }
   cardFor(s) {
-    return { ...s, href: '#/score/' + s.id, meta: 'PDF · [skill level] · ' + s.year, price: '[price] CAD', onAdd: () => this.add(s.id) };
+    return { ...s, href: s.url || '#/score/' + s.id, meta: 'PDF · [skill level] · ' + s.year, price: '[price] CAD', onAdd: () => this.add(s.id) };
   }
 
   curtainEl() {
@@ -918,7 +920,7 @@ class Component extends DCLogic {
 
     const visible = SCORES.filter(x => !st.filters.length || st.filters.includes(x.cat));
     const cartLines = st.cart.map(id => SCORES.find(x => x.id === id)).map(x => ({
-      ...x, href: '#/score/' + x.id, price: '[price] CAD', remove: () => this.remove(x.id), removeLabel: 'Remove ' + x.title + ' from cart'
+      ...x, href: x.url || '#/score/' + x.id, price: '[price] CAD', remove: () => this.remove(x.id), removeLabel: 'Remove ' + x.title + ' from cart'
     }));
 
     const cfSubmit = (e) => {
