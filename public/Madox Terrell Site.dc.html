@@ -108,9 +108,11 @@
             <div style="position: absolute; right: 0; bottom: 8%; width: 42%; height: 38%; z-index: 3; border: 8px solid var(--surface); border-radius: 20px; box-sizing: border-box; background: var(--surface);">
               <image-slot id="home-hero-second" shape="rounded" radius="12" src="assets/madox-studio.jpg" alt="Studio portrait of Madox Terrell" placeholder="[Photo: studio]"></image-slot>
             </div>
+            <sc-if value="{{ hasAudio }}" hint-placeholder-val="{{ false }}">
             <div style="position: absolute; left: 0; bottom: 0; z-index: 4; max-width: 100%;">
               <dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point" src="{{ audioSrc }}" hint-size="330px,110px"></dc-import>
             </div>
+            </sc-if>
           </div>
         </div>
       </section>
@@ -135,9 +137,6 @@
               </a>
               <p class="eyebrow" style="margin: 0;">Choral</p>
               <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22; max-width: 60%;">Writing for choirs</h3>
-              <div style="aspect-ratio: 16 / 10; width: 100%;">
-                <image-slot id="home-choral" shape="rounded" radius="12" placeholder="[Photo: choir rehearsal or premiere]"></image-slot>
-              </div>
               <p class="body" style="margin: 0; text-wrap: pretty;">Over three hours of choral music for commissions across Ontario, and six seasons as Composer-in-Residence with the Ottawa Regional Youth Choir.</p>
               <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/scores" hint-size="160px,48px">Browse scores</x-import></div>
             </article>
@@ -148,7 +147,6 @@
                 <image-slot id="home-electronic" shape="rounded" radius="12" placeholder="[Photo: Madox in the studio]"></image-slot>
               </div>
               <p class="body" style="margin: 0; text-wrap: pretty;">Four albums written and produced, with over 100,000 streams across platforms. Also the electronic score for the video game Downbeat (2021).</p>
-              <dc-import name="CodePlayer" title="Downbeat" artist="Madox" seed="downbeat" hint-size="330px,110px"></dc-import>
             </article>
           </div>
         </div>
@@ -169,12 +167,9 @@
               <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 5.6vw, 72px); line-height: 1.04;">Breaking<br>Point</h2>
               <p class="meta" style="margin: 0;">Madox · 2023 · Album</p>
               <p class="body" style="margin: 0; max-width: 480px;">A 30-minute electronic and acoustic album, with over 33,000 plays.</p>
+              <sc-if value="{{ hasAudio }}" hint-placeholder-val="{{ false }}">
               <div style="margin-top: 8px;"><dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point-2" src="{{ audioSrc }}" on-fill="{{ true }}" hint-size="330px,110px"></dc-import></div>
-              <div style="display: flex; flex-wrap: wrap; gap: 4px 24px;">
-                <a href="#spotify" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">Spotify [link]</a>
-                <a href="#apple-music" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">Apple Music [link]</a>
-                <a href="#youtube" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px;">YouTube: Lost in Translation [link]</a>
-              </div>
+              </sc-if>
             </div>
           </article>
         </div>
@@ -186,7 +181,7 @@
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <p class="eyebrow mx-eyebrow">Scores</p>
               <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 6vw, 72px); line-height: 1.04;">Sheet music</h2>
-              <p class="body" style="margin: 0; color: var(--ink-muted);">PDF. Digital download, instant delivery.</p>
+              <p class="body" style="margin: 0; color: var(--ink-muted);">Published by Modern Sound Collective.</p>
             </div>
             <a href="#/scores" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">View all scores</a>
           </div>
@@ -233,9 +228,9 @@
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <p class="eyebrow mx-eyebrow">Shop</p>
             <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Scores</h1>
-            <p class="body-lg" style="margin: 0; max-width: 640px;">PDF scores for choirs, voice and piano. Digital download, instant delivery.</p>
-            <p class="small" style="margin: 0; color: var(--ink-muted);">[Catalogue to be confirmed by Madox: which works are for sale]</p>
+            <p class="body-lg" style="margin: 0; max-width: 640px;">Scores for choir, published by Modern Sound Collective.</p>
           </div>
+          <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ false }}">
           <fieldset style="border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px;">
             <legend class="label" style="padding: 0; margin-bottom: 12px;">Instrumentation</legend>
             <div style="display: flex; flex-wrap: wrap; gap: 12px;">
@@ -244,6 +239,7 @@
               </sc-for>
             </div>
           </fieldset>
+          </sc-if>
           <p class="meta" role="status" style="margin: 0; color: var(--ink-muted);">{{ resultCount }}</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, 340px); gap: 24px; justify-content: start;">
             <sc-for list="{{ visibleScores }}" as="s" hint-placeholder-count="6">
@@ -476,10 +472,7 @@
           <div style="display: flex; flex-direction: column; gap: 24px;">
             <p class="body" style="margin: 0; text-wrap: pretty;">Madox Terrell is a composer, vocalist and producer based in Ottawa, Ontario. He holds a Bachelor of Music from the University of Ottawa (2024), with profiles in composition and voice. Since 2017 he has composed over three hours of choral music for commissions across Ontario, and has written and produced four albums under the name Madox, with over 100,000 streams across platforms.</p>
             <p class="body" style="margin: 0; text-wrap: pretty;">From 2018 to 2024 he was Composer-in-Residence and Vocal Coach with the Ottawa Regional Youth Choir, writing over an hour of music for its seasonal concerts. He has sung as cantor since 2016, at St. John the Evangelist Church and now St. Joseph's Parish, and teaches piano, voice and digital audio production at Rockstar Music.</p>
-            <p class="body" style="margin: 0; color: var(--ink-muted);">[Mentors and collaborators, if supplied]</p>
             <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;">
-              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="outline" href="#cv" hint-size="170px,48px">Download CV (PDF)</x-import>
-              <span class="small" style="color: var(--ink-muted);">[CV link]</span>
               <a href="mailto:madox.terrell@gmail.com" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">madox.terrell@gmail.com</a>
             </div>
           </div>
@@ -561,19 +554,12 @@
                 <a href="#facebook" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
               </div>
             </div>
-            <p class="small" style="margin: 0; color: var(--ink-muted);">Replies within [response time].</p>
-            <div style="position: relative; width: 100%; max-width: 460px; aspect-ratio: 4 / 3; margin-top: 16px;">
-              <div aria-hidden="true" style="position: absolute; right: 0; bottom: 0; width: 80%; height: 80%; background: var(--surface-alt); border-radius: 20px;"></div>
-              <div style="position: absolute; left: 0; top: 0; width: 84%; height: 84%; z-index: 2;">
-                <image-slot id="contact-photo" shape="rounded" radius="20" placeholder="[Photo: Madox at work]"></image-slot>
-              </div>
-            </div>
           </div>
           <div style="background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 4vw, 48px);">
             <sc-if value="{{ contactSent }}" hint-placeholder-val="{{ false }}">
               <div role="status" style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
                 <p class="score-title" style="margin: 0; display: flex; align-items: center; gap: 12px;"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"></path></svg>Message sent</p>
-                <p class="body" style="margin: 0;">Thank you, {{ ct.name }}. You will get a reply at {{ ct.email }} within <span style="color: var(--ink-muted);">[response time]</span>.</p>
+                <p class="body" style="margin: 0;">Thank you, {{ ct.name }}. You will get a reply at {{ ct.email }}.</p>
                 <button type="button" onClick="{{ resetContact }}" class="mx-btn mx-btn--outline">Send another message</button>
               </div>
             </sc-if>
@@ -621,7 +607,6 @@
       <section data-reveal="" style="background: {{ bandBg }}; padding: clamp(64px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
           <h2 class="display-xl" style="margin: 0; font-size: clamp(32px, 6.5vw, 72px); line-height: 1.08;">Commission a new work</h2>
-          <p class="body-lg" style="margin: 0; max-width: 640px; color: var(--ink-muted);">[One line on commissions: forces, timelines, how to start.]</p>
           <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/contact" hint-size="150px,48px">Get in touch</x-import>
         </div>
       </section>
@@ -655,7 +640,7 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;transition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bars&quot;,&quot;fade&quot;,&quot;none&quot;],&quot;default&quot;:&quot;bars&quot;,&quot;tsType&quot;:&quot;'bars'|'fade'|'none'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;audioSrc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Audio&quot;}}">
-const SCORES = [
+const ALL_SCORES = [
   { id: 'may', title: 'May', year: 2024, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "May"', desc: 'Setting of Christina Rossetti\'s "May", submitted to the Ruth Watson Henderson Choral Composition Competition. Composed 2024.' },
   { id: 'remember', url: 'https://modernsoundcollective.ca/store/msc0010-remember', cover: 'assets/remember-score-p1.png', title: 'Remember', year: 2021, instr: 'Choir · SATB, a cappella', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
   { id: 'the-buried-life', title: 'The Buried Life', year: 2019, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Selected for the Amadeus Choir of Greater Toronto Choral Composers Workshop.' },
@@ -665,6 +650,9 @@ const SCORES = [
   { id: 'the-key-note', title: 'The Key-Note', year: 2022, instr: 'Voice, viola and piano', cat: 'Solo voice', text: 'Christina Rossetti, "The Key-Note"', desc: 'Setting of Christina Rossetti\'s "The Key-Note" for solo voice, solo viola and piano. Composed 2022.' },
   { id: 'halfway-there', title: 'Halfway There', year: 2018, instr: 'Piano', cat: 'Piano', desc: 'Piano composition, selected for the Canadian Music Showcase composition award. Composed 2018.' }
 ];
+// Only these scores are shown for now. Add an id to bring a score back.
+const LIVE_SCORES = ['remember'];
+const SCORES = ALL_SCORES.filter(s => LIVE_SCORES.includes(s.id));
 const PHOTOS = [
   { src: 'assets/madox-side-profile.jpg', alt: 'Madox Terrell in profile, black and white', caption: 'Madox Terrell' },
   { src: 'assets/madox-studio.jpg', alt: 'Studio portrait of Madox Terrell', caption: 'Madox Terrell' },
@@ -677,7 +665,7 @@ const CATS = ['Choir', 'Choir and strings', 'Solo voice', 'Piano'];
 const SUBJECTS = ['Commission', 'Performance', 'Lessons', 'Scores', 'Other'];
 const PAGES = {
   home: ['Madox Terrell, composer, vocalist and producer', 'Choral and electronic music, written, sung and produced in Ottawa.'],
-  scores: ['Scores | Madox Terrell', 'PDF scores for choirs, voice and piano by Madox Terrell. Digital download, instant delivery.'],
+  scores: ['Scores | Madox Terrell', 'Scores for choir by Madox Terrell, published by Modern Sound Collective.'],
   cart: ['Cart | Madox Terrell', 'Your cart.'],
   checkout: ['Checkout | Madox Terrell', 'Checkout. PDF delivered instantly after payment.'],
   gallery: ['Gallery | Madox Terrell', 'Photos of Madox Terrell.'],
@@ -952,6 +940,7 @@ class Component extends DCLogic {
       mainTransition: st.enterAnim ? 'opacity 500ms ease, transform 600ms cubic-bezier(.2,.7,.2,1)' : 'none',
       curtain: this.curtainEl(), marquee: this.marqueeEl(),
       audioSrc: this.props.audioSrc || '',
+      hasAudio: !!this.props.audioSrc,
       sideOffset: st.w < 1000 ? 0 : 140,
       bandBg: ['home', 'score', 'gallery'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
       navLinks, activeNav, cartCount: count,
@@ -971,9 +960,10 @@ class Component extends DCLogic {
       showBand: ['home', 'scores', 'score', 'gallery', 'about'].includes(page),
 
       scrollToListen: (e) => { e.preventDefault(); const el = document.getElementById('listen'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY, behavior: this.reduce ? 'auto' : 'smooth' }); },
-      featuredScores: [SCORES[0], SCORES[1], SCORES[2]].map((x, i) => ({ ...this.cardFor(x), offset: st.w < 1100 ? 0 : [0, 64, 128][i] })),
+      featuredScores: SCORES.slice(0, 3).map((x, i) => ({ ...this.cardFor(x), offset: st.w < 1100 ? 0 : [0, 64, 128][i] })),
       visibleScores: visible.map(x => this.cardFor(x)),
       resultCount: visible.length + (visible.length === 1 ? ' score' : ' scores'),
+      showFilters: new Set(SCORES.map(x => x.cat)).size > 1,
       filterChips: CATS.map(c => ({ label: c, selected: st.filters.includes(c), toggle: () => this.setState(x => ({ filters: x.filters.includes(c) ? x.filters.filter(y => y !== c) : [...x.filters, c] })) })),
       score,
 
