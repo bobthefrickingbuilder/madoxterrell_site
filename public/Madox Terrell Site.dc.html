@@ -193,7 +193,7 @@
           <div style="display: grid; grid-template-columns: repeat(auto-fill, 340px); gap: 24px; justify-content: space-between; align-items: start;">
             <sc-for list="{{ featuredScores }}" as="s" hint-placeholder-count="3">
               <div style="margin-top: {{ s.offset }}px;">
-                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
+                <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" cover="{{ s.cover }}" add-label="{{ s.addLabel }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
               </div>
             </sc-for>
           </div>
@@ -247,7 +247,7 @@
           <p class="meta" role="status" style="margin: 0; color: var(--ink-muted);">{{ resultCount }}</p>
           <div style="display: grid; grid-template-columns: repeat(auto-fill, 340px); gap: 24px; justify-content: start;">
             <sc-for list="{{ visibleScores }}" as="s" hint-placeholder-count="6">
-              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
+              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.ScoreCard" title="{{ s.title }}" href="{{ s.href }}" instrumentation="{{ s.instr }}" meta="{{ s.meta }}" price="{{ s.price }}" cover="{{ s.cover }}" add-label="{{ s.addLabel }}" on-add="{{ s.onAdd }}" hint-size="340px,440px"></x-import>
             </sc-for>
           </div>
         </div>
@@ -657,7 +657,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;transition&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;bars&quot;,&quot;fade&quot;,&quot;none&quot;],&quot;default&quot;:&quot;bars&quot;,&quot;tsType&quot;:&quot;'bars'|'fade'|'none'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;audioSrc&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Audio&quot;}}">
 const SCORES = [
   { id: 'may', title: 'May', year: 2024, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "May"', desc: 'Setting of Christina Rossetti\'s "May", submitted to the Ruth Watson Henderson Choral Composition Competition. Composed 2024.' },
-  { id: 'remember', url: 'https://modernsoundcollective.ca/store/msc0010-remember', title: 'Remember', year: 2021, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
+  { id: 'remember', url: 'https://modernsoundcollective.ca/store/msc0010-remember', cover: 'assets/remember-score-p1.png', title: 'Remember', year: 2021, instr: 'Choir · SATB, a cappella', cat: 'Choir', text: 'Christina Rossetti, "Remember"', desc: 'Setting of Christina Rossetti\'s "Remember", commissioned by Modern Sound Collective. Composed 2021, published 2024.' },
   { id: 'the-buried-life', title: 'The Buried Life', year: 2019, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Selected for the Amadeus Choir of Greater Toronto Choral Composers Workshop.' },
   { id: 'if-i-might-see-another-spring', title: 'If I Might See Another Spring', year: 2020, instr: 'Choir · [voicing]', cat: 'Choir', text: 'Christina Rossetti', desc: 'Christina Rossetti setting for virtual choir, premiered by the Ottawa Regional Youth Choir in 2020.' },
   { id: 'de-profundis', title: 'De Profundis', year: 2017, instr: 'Choir · [voicing]', cat: 'Choir', desc: 'Choral work premiered by the Ottawa Regional Youth Choir. Composed 2017.' },
@@ -859,6 +859,7 @@ class Component extends DCLogic {
   stepLb(d) { const n = PHOTOS.length; this.setState(st => ({ lb: (st.lb + d + n) % n })); }
   setter(form, key) { return (e) => { const v = e.target.value; this.setState(st => ({ [form]: { ...st[form], [key]: v } })); }; }
   cardFor(s) {
+    if (s.url) return { ...s, href: s.url, meta: 'Modern Sound Collective · ' + s.year, price: ' ', addLabel: 'Buy from Modern Sound Collective', onAdd: () => window.location.assign(s.url) };
     return { ...s, href: s.url || '#/score/' + s.id, meta: 'PDF · [skill level] · ' + s.year, price: '[price] CAD', onAdd: () => this.add(s.id) };
   }
 
