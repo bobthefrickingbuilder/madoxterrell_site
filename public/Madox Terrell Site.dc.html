@@ -139,13 +139,13 @@
                 <img src="assets/remember-score-p1.png" alt="" style="position: absolute; display: block; width: 200%; height: auto; max-width: none; left: -50%; top: -52.6%;">
               </a>
               <p class="eyebrow" style="margin: 0;">Choral</p>
-              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22; max-width: 60%;">For voices in a room</h3>
+              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22; max-width: 60%;">Commissions and premieres</h3>
               <p class="body" style="margin: 0; text-wrap: pretty;">Over three hours of choral music for commissions across Canada, and six seasons as Composer-in-Residence with the Ottawa Regional Youth Choir.</p>
               <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/scores" hint-size="160px,48px">Browse scores</x-import></div>
             </article>
             <article style="position: relative; background: var(--surface-alt); border: 1px solid var(--line); border-radius: 20px; padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; gap: 20px; margin-top: {{ sideOffset }}px;">
               <p class="eyebrow mx-eyebrow">Electronic</p>
-              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22;">For headphones in the dark</h3>
+              <h3 class="display-md" style="margin: 0; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.22;">Albums and a game score</h3>
               <div style="position: relative; aspect-ratio: 16 / 10; width: 100%;">
                 <image-slot id="home-electronic" shape="rounded" radius="12" placeholder="[Photo: Madox in the studio]"></image-slot>
               </div>
@@ -183,7 +183,7 @@
           <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px;">
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <p class="eyebrow mx-eyebrow">Scores</p>
-              <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 6vw, 72px); line-height: 1.04;">Yours to sing</h2>
+              <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 6vw, 72px); line-height: 1.04;">Sheet music</h2>
               <p class="body" style="margin: 0; color: var(--ink-muted);">Published by Modern Sound Collective.</p>
             </div>
             <a href="#/scores" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">View all scores</a>
@@ -211,7 +211,7 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
             <p class="eyebrow mx-eyebrow">About</p>
-            <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">The short version</h2>
+            <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">Madox Terrell</h2>
             <p class="body-lg" style="margin: 0; text-wrap: pretty;">A multi-disciplinary musician with a background in composition for voice and more than a decade of performance experience, interested in choral composition, vocal performance and experimental sound design.</p>
             <dl style="margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; width: 100%; border-top: 1px solid var(--line); padding-top: 24px;">
               <div style="display: flex; flex-direction: column; gap: 4px;"><dt class="eyebrow mx-eyebrow">Studied</dt><dd class="body" style="margin: 0;">University of Ottawa, BMus 2024</dd></div>
@@ -229,8 +229,8 @@
       <section data-screen-label="Scores" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
           <div style="display: flex; flex-direction: column; gap: 12px;">
-            <p class="eyebrow mx-eyebrow">Scores</p>
-            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">For your next rehearsal</h1>
+            <p class="eyebrow mx-eyebrow">Shop</p>
+            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Scores</h1>
             <p class="body-lg" style="margin: 0; max-width: 640px;">Scores for choir, published by Modern Sound Collective.</p>
           </div>
           <sc-if value="{{ showFilters }}" hint-placeholder-val="{{ false }}">
@@ -384,8 +384,7 @@
     <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
       <section data-screen-label="Gallery" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
-          <p class="eyebrow mx-eyebrow">Gallery</p>
-          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">On stage and off</h1>
+          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Gallery</h1>
           <ul style="list-style: none; margin: 0; padding: 0; columns: 3 280px; column-gap: 24px;">
             <sc-for list="{{ photos }}" as="p" hint-placeholder-count="5">
               <li style="break-inside: avoid; margin: 0 0 24px;">
@@ -427,8 +426,8 @@
     <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
       <section data-screen-label="About" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto clamp(40px, 6vw, 64px); padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 12px;">
-          <p class="eyebrow mx-eyebrow">About</p>
-          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Three trades, one ear</h1>
+          <p class="eyebrow mx-eyebrow">Composer · Vocalist · Producer</p>
+          <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">About</h1>
           <p class="body-lg" style="margin: 0; max-width: 640px; text-wrap: pretty;">A multi-disciplinary musician with a background in composition for voice and more than a decade of performance experience, interested in choral composition, vocal performance and experimental sound design.</p>
         </div>
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(32px, 5vw, 64px); align-items: start;">
@@ -454,7 +453,7 @@
 
       <section data-reveal="" style="background: var(--surface-alt); padding: clamp(64px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
-          <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">The catalogue so far</h2>
+          <h2 class="display-lg" style="margin: 0; font-size: clamp(32px, 5vw, 52px); line-height: 1.12;">Selected works</h2>
           <ol style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line);">
             <sc-for list="{{ works }}" as="w" hint-placeholder-count="11">
               <li style="display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 4px 24px; padding: 20px 0; border-bottom: 1px solid var(--line);">
@@ -472,7 +471,7 @@
       <section data-reveal="" style="background: var(--surface); padding: clamp(64px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 64px 48px; align-items: start;">
           <div style="display: flex; flex-direction: column; gap: 24px;">
-            <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Heard live</h2>
+            <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Performance</h2>
             <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
               <sc-for list="{{ performances }}" as="p" hint-placeholder-count="6">
                 <li style="display: flex; flex-direction: column; gap: 4px; padding-bottom: 20px; border-bottom: 1px solid var(--line);">
@@ -485,7 +484,7 @@
           </div>
           <div style="display: flex; flex-direction: column; gap: 48px;">
             <div style="display: flex; flex-direction: column; gap: 24px;">
-              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">The training</h2>
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Education</h2>
               <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
                 <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">2024</span><span class="body">Bachelor of Music, Composition and Voice profiles, University of Ottawa</span></li>
                 <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">2018</span><span class="body">Classical Piano Certificate, Grade 8, Conservatory Canada. First Class Honours.</span></li>
@@ -493,7 +492,7 @@
               </ul>
             </div>
             <div style="display: flex; flex-direction: column; gap: 24px;">
-              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Steady work</h2>
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Experience</h2>
               <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px;">
                 <sc-for list="{{ experience }}" as="e" hint-placeholder-count="5">
                   <li style="display: flex; flex-direction: column; gap: 4px;"><span class="meta" style="color: var(--ink-muted);">{{ e.when }}</span><span class="body" style="font-weight: 600;">{{ e.role }}</span><span class="body" style="text-wrap: pretty;">{{ e.detail }}</span></li>
@@ -501,7 +500,7 @@
               </ul>
             </div>
             <div style="display: flex; flex-direction: column; gap: 16px;">
-              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">The toolkit</h2>
+              <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Skills</h2>
               <p class="body" style="margin: 0;">Composition, vocal performance, collaborative piano, choral conducting, FL Studio, Ableton, Sibelius, Finale.</p>
             </div>
           </div>
@@ -514,8 +513,7 @@
       <section data-screen-label="Contact" style="background: var(--surface); padding: clamp(56px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(40px, 6vw, 96px); align-items: start;">
           <div style="display: flex; flex-direction: column; gap: 24px;">
-            <p class="eyebrow mx-eyebrow">Contact</p>
-            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Let's hear it</h1>
+            <h1 class="display-xl" style="margin: 0; font-size: clamp(40px, 7vw, 72px); line-height: 1.08;">Contact</h1>
             <p class="body-lg" style="margin: 0; text-wrap: pretty;">Write about a commission, a performance, lessons or a score.</p>
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <span class="eyebrow mx-eyebrow">Email</span>
@@ -584,8 +582,8 @@
     <sc-if value="{{ showBand }}" hint-placeholder-val="{{ true }}">
       <section data-reveal="" style="background: {{ bandBg }}; padding: clamp(64px, 8vw, 96px) 0;">
         <div style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 24px; align-items: flex-start;">
-          <h2 class="display-xl" style="margin: 0; font-size: clamp(32px, 6.5vw, 72px); line-height: 1.08;">Have a text in mind?</h2>
-          <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/contact" hint-size="190px,48px">Commission a work</x-import>
+          <h2 class="display-xl" style="margin: 0; font-size: clamp(32px, 6.5vw, 72px); line-height: 1.08;">Commission a new work</h2>
+          <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" href="#/contact" hint-size="150px,48px">Get in touch</x-import>
         </div>
       </section>
     </sc-if>
