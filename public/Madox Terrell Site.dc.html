@@ -24,6 +24,7 @@
     a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 4px; }
     a:hover { color: var(--on-fill); }
     :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+    .spotify-embed { display: block; width: 100%; border: 0; border-radius: 12px; }
     .footer-credit { display: inline-flex; align-items: center; gap: 0.25em; min-height: 44px; color: var(--ink-muted); }
     .footer-credit a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-decoration-color: currentColor; text-decoration-thickness: 1px; }
     .footer-credit a:hover { color: var(--ink); }
@@ -112,11 +113,9 @@
             <div style="position: absolute; right: 0; bottom: 8%; width: 42%; height: 38%; z-index: 3; border: 8px solid var(--surface); border-radius: 20px; box-sizing: border-box; background: var(--surface);">
               <image-slot id="home-hero-second" shape="rounded" radius="12" src="assets/madox-studio.jpg" alt="Studio portrait of Madox Terrell" placeholder="[Photo: studio]"></image-slot>
             </div>
-            <sc-if value="{{ hasAudio }}" hint-placeholder-val="{{ false }}">
-            <div style="position: absolute; left: 0; bottom: 0; z-index: 4; max-width: 100%;">
-              <dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point" src="{{ audioSrc }}" hint-size="330px,110px"></dc-import>
+            <div style="position: absolute; left: 0; bottom: 0; z-index: 4; width: min(330px, 100%);">
+              <iframe class="spotify-embed" title="Play Breaking Point by Madox on Spotify" src="https://open.spotify.com/embed/track/0wT3p9BGF5x3UHHoPGW3c8?utm_source=generator&theme=0" height="80" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             </div>
-            </sc-if>
           </div>
         </div>
       </section>
@@ -151,6 +150,7 @@
                 <image-slot id="home-electronic" shape="rounded" radius="12" placeholder="[Photo: Madox in the studio]"></image-slot>
               </div>
               <p class="body" style="margin: 0; text-wrap: pretty;">Four albums written and produced, with over 100,000 streams across platforms. Also the electronic score for the video game Downbeat (2021).</p>
+              <iframe class="spotify-embed" title="Play Symptomatic by Madox on Spotify" src="https://open.spotify.com/embed/track/7d6miz0W560wC4dqSQXmqB?utm_source=generator&theme=0" height="80" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
             </article>
           </div>
         </div>
@@ -171,9 +171,8 @@
               <h2 class="display-xl" style="margin: 0; font-size: clamp(36px, 5.6vw, 72px); line-height: 1.04;">Breaking<br>Point</h2>
               <p class="meta" style="margin: 0;">Madox · 2023 · Album</p>
               <p class="body" style="margin: 0; max-width: 480px;">A 30-minute electronic and acoustic album, with over 33,000 plays.</p>
-              <sc-if value="{{ hasAudio }}" hint-placeholder-val="{{ false }}">
-              <div style="margin-top: 8px;"><dc-import name="CodePlayer" title="Breaking Point" artist="Madox" seed="breaking-point-2" src="{{ audioSrc }}" on-fill="{{ true }}" hint-size="330px,110px"></dc-import></div>
-              </sc-if>
+              <div style="margin-top: 8px;"><iframe class="spotify-embed" title="Play the album Breaking Point by Madox on Spotify" src="https://open.spotify.com/embed/album/0N4bZxbY8gezbs1YDEl4ks?utm_source=generator&theme=0" height="152" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe></div>
+              <a href="https://open.spotify.com/album/0N4bZxbY8gezbs1YDEl4ks" target="_blank" rel="noopener" class="label" style="color: var(--on-fill); text-decoration-color: var(--on-fill); display: inline-flex; align-items: center; min-height: 44px; align-self: flex-start;">Listen on Spotify</a>
             </div>
           </article>
         </div>
@@ -917,7 +916,6 @@ class Component extends DCLogic {
       mainTransition: st.enterAnim ? 'opacity 500ms ease, transform 600ms cubic-bezier(.2,.7,.2,1)' : 'none',
       curtain: this.curtainEl(), marquee: this.marqueeEl(),
       audioSrc: this.props.audioSrc || '',
-      hasAudio: !!this.props.audioSrc,
       sideOffset: st.w < 1000 ? 0 : 140,
       bandBg: ['home', 'score'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
       navLinks, activeNav, cartCount: count,
