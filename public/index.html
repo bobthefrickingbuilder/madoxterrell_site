@@ -397,37 +397,6 @@
           </ul>
         </div>
       </section>
-
-      <section data-reveal="" style="background: var(--surface-alt); padding: clamp(64px, 8vw, 96px) 0;">
-        <div style="max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 32px); box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
-          <h2 class="display-md" style="margin: 0; font-size: clamp(28px, 3.4vw, 36px); line-height: 1.22;">Comments</h2>
-          <sc-if value="{{ commentsLoading }}" hint-placeholder-val="{{ true }}">
-            <p class="body" role="status" style="margin: 0; color: var(--ink-muted);">Loading comments...</p>
-          </sc-if>
-          <sc-if value="{{ commentsEmpty }}" hint-placeholder-val="{{ false }}">
-            <p class="body" style="margin: 0; color: var(--ink-muted);">No comments yet.</p>
-          </sc-if>
-          <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px;">
-            <sc-for list="{{ comments }}" as="c" hint-placeholder-count="0">
-              <li style="background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; gap: 8px;">
-                <p class="meta" style="margin: 0; color: var(--ink-muted);">{{ c.name }} · {{ c.when }}</p>
-                <p class="body" style="margin: 0; white-space: pre-wrap;">{{ c.body }}</p>
-              </li>
-            </sc-for>
-          </ul>
-          <form onSubmit="{{ submitComment }}" novalidate="" style="display: flex; flex-direction: column; gap: 24px; border-top: 1px solid var(--line); padding-top: 32px;">
-            <h3 class="score-title" style="margin: 0;">Write a comment</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px;">
-              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-email" label="Email" type="email" help="Not published." value="{{ cf.email }}" error="{{ cfErr.email }}" on-change="{{ cfSet.email }}" hint-size="100%,110px"></x-import>
-              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-name" label="Name" value="{{ cf.name }}" error="{{ cfErr.name }}" on-change="{{ cfSet.name }}" hint-size="100%,80px"></x-import>
-              <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-web" label="Website" type="url" help="Optional." value="{{ cf.website }}" on-change="{{ cfSet.website }}" hint-size="100%,110px"></x-import>
-            </div>
-            <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="c-body" label="Comment" multiline="{{ true }}" rows="{{ 4 }}" value="{{ cf.body }}" error="{{ cfErr.body }}" on-change="{{ cfSet.body }}" hint-size="100%,160px"></x-import>
-            <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="light" type="submit" hint-size="150px,48px">Post comment</x-import></div>
-          </form>
-        </div>
-      </section>
-
       <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
         <div role="dialog" aria-modal="true" aria-label="{{ lbAria }}" style="position: fixed; inset: 0; z-index: 40; background: var(--surface); display: flex; flex-direction: column; padding: clamp(16px, 3vw, 32px); gap: 16px; box-sizing: border-box;">
           <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
@@ -583,7 +552,11 @@
                   </sc-if>
                 </fieldset>
                 <x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Field" id="ct-msg" label="Message" multiline="{{ true }}" rows="{{ 6 }}" value="{{ ct.message }}" error="{{ ctErr.message }}" on-change="{{ ctSet.message }}" hint-size="100%,200px"></x-import>
-                <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" type="submit" hint-size="150px,48px">Send message</x-import></div>
+                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" value="{{ ct.website }}" onChange="{{ ctSet.website }}" style="position: absolute; left: -9999px; width: 1px; height: 1px;">
+                <sc-if value="{{ ctFailed }}" hint-placeholder-val="{{ false }}">
+                  <p class="body" role="alert" style="margin: 0;">Your message didn't send. Please email <a href="mailto:madox.terrell@gmail.com">madox.terrell@gmail.com</a> instead.</p>
+                </sc-if>
+                <div><x-import component-from-global-scope="MadoxTerrellDesignSystem_30d205.Button" variant="primary" type="submit" disabled="{{ ctSending }}" hint-size="150px,48px">{{ ctButton }}</x-import></div>
               </form>
             </sc-if>
           </div>
@@ -665,6 +638,7 @@ const PHOTOS = [
   { src: 'assets/madox-portrait-blue.jpg', alt: 'Portrait of Madox Terrell', caption: 'Madox Terrell' },
   { src: 'assets/slot-about-second.webp', alt: 'Madox Terrell singing with a choir', caption: 'Madox Terrell with choir' }
 ];
+const CONTACT_ENDPOINT = 'https://formsubmit.co/ajax/madox.terrell@gmail.com';
 const POLICY_PAGES = { privacy: '/privacy-policy', refund: '/refund-policy' };
 const CATS = ['Choir', 'Choir and strings', 'Solo voice', 'Piano'];
 const SUBJECTS = ['Commission', 'Performance', 'Lessons', 'Scores', 'Other'];
@@ -723,9 +697,8 @@ class Component extends DCLogic {
   state = {
     route: parseHash(), phase: 'idle', dest: '', enter: true, enterAnim: true, w: window.innerWidth, menuOpen: false,
     cart: [], toast: null, justAdded: null, filters: [],
-    lb: -1, commentsLoading: true, comments: [],
-    cf: { email: '', name: '', website: '', body: '' }, cfErr: {},
-    ct: { name: '', email: '', subject: '', message: '' }, ctErr: {}, contactSent: false
+    lb: -1,
+    ct: { name: '', email: '', subject: '', message: '', website: '' }, ctErr: {}, contactSent: false, ctSending: false, ctFailed: false
   };
   lbCloseRef = React.createRef();
 
@@ -794,11 +767,6 @@ class Component extends DCLogic {
       m.setAttribute('content', desc);
     };
     apply(); setTimeout(apply, 50);
-    if (this.state.route.page === 'gallery') {
-      this.setState({ commentsLoading: true });
-      clearTimeout(this.loadT);
-      this.loadT = setTimeout(() => this.setState({ commentsLoading: false }), 900);
-    }
     setTimeout(() => this.setupReveal(), 30);
   }
   setupReveal() {
@@ -861,6 +829,8 @@ class Component extends DCLogic {
     const { phase, dest } = this.state, n = 12, h = React.createElement;
     const bars = Array.from({ length: n }, (_, i) => h('div', { key: i, style: {
       flex: 1, height: '100%',
+      // Overlap neighbours so fractional widths can't leave a seam mid-transition.
+      marginRight: i < n - 1 ? -1 : 0,
       background: i % 5 === 2 ? 'var(--violet)' : i % 7 === 4 ? 'var(--accent)' : 'var(--surface-alt)',
       transform: phase === 'cover' ? 'scaleY(1)' : 'scaleY(0)',
       transformOrigin: phase === 'reveal' ? 'top' : 'bottom',
@@ -918,16 +888,6 @@ class Component extends DCLogic {
       ...x, href: x.url || '#/score/' + x.id, price: '[price] CAD', remove: () => this.remove(x.id), removeLabel: 'Remove ' + x.title + ' from cart'
     }));
 
-    const cfSubmit = (e) => {
-      e.preventDefault();
-      const f = st.cf, err = {};
-      if (!f.email.includes('@')) err.email = 'enter an email address, for example name@example.com.';
-      if (!f.name.trim()) err.name = 'enter your name.';
-      if (!f.body.trim()) err.body = 'write a comment.';
-      if (Object.keys(err).length) { this.setState({ cfErr: err }); return; }
-      const when = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
-      this.setState(x => ({ comments: [...x.comments, { name: f.name.trim(), body: f.body.trim(), when }], cf: { email: '', name: '', website: '', body: '' }, cfErr: {} }));
-    };
     const ctSubmit = (e) => {
       e.preventDefault();
       const f = st.ct, err = {};
@@ -936,7 +896,18 @@ class Component extends DCLogic {
       if (!f.subject) err.subject = 'choose a subject.';
       if (!f.message.trim()) err.message = 'write a message.';
       if (Object.keys(err).length) { this.setState({ ctErr: err }); return; }
-      this.setState({ ctErr: {}, contactSent: true });
+      if (st.ctSending) return;
+      // Honeypot: only bots fill this hidden field, so skip the send.
+      if (f.website) { this.setState({ ctErr: {}, contactSent: true }); return; }
+      this.setState({ ctErr: {}, ctSending: true, ctFailed: false });
+      fetch(CONTACT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({ name: f.name.trim(), email: f.email.trim(), subject: f.subject, message: f.message.trim(), _subject: 'Website message: ' + f.subject, _replyto: f.email.trim(), _template: 'table', _captcha: 'false' })
+      }).then(r => r.json()).then(d => {
+        if (String(d.success) !== 'true') throw new Error(d.message || 'Not sent');
+        this.setState({ ctSending: false, contactSent: true });
+      }).catch(() => this.setState({ ctSending: false, ctFailed: true }));
     };
 
     return {
@@ -948,7 +919,7 @@ class Component extends DCLogic {
       audioSrc: this.props.audioSrc || '',
       hasAudio: !!this.props.audioSrc,
       sideOffset: st.w < 1000 ? 0 : 140,
-      bandBg: ['home', 'score', 'gallery'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
+      bandBg: ['home', 'score'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
       navLinks, activeNav, cartCount: count,
       showCart: SCORES.some(x => !x.url),
       cartAria: 'Cart, ' + count + (count === 1 ? ' item' : ' items'),
@@ -982,17 +953,14 @@ class Component extends DCLogic {
       lbOpen: st.lb >= 0, lbSrc: (PHOTOS[st.lb] || PHOTOS[0]).src, lbAlt: (PHOTOS[st.lb] || PHOTOS[0]).alt, lbCaption: (PHOTOS[st.lb] || PHOTOS[0]).caption,
       lbCount: (st.lb + 1) + ' / ' + PHOTOS.length, lbAria: 'Photo ' + (st.lb + 1) + ' of ' + PHOTOS.length,
       lbClose: () => this.closeLb(), lbPrev: () => this.stepLb(-1), lbNext: () => this.stepLb(1), lbCloseRef: this.lbCloseRef,
-      commentsLoading: st.commentsLoading, commentsEmpty: !st.commentsLoading && st.comments.length === 0,
-      comments: st.commentsLoading ? [] : st.comments,
-      cf: st.cf, cfErr: st.cfErr, submitComment: cfSubmit,
-      cfSet: { email: this.setter('cf', 'email'), name: this.setter('cf', 'name'), website: this.setter('cf', 'website'), body: this.setter('cf', 'body') },
 
       works: WORKS, performances: PERF, experience: EXP,
 
       ct: st.ct, ctErr: st.ctErr, contactSent: st.contactSent, contactForm: !st.contactSent, submitContact: ctSubmit,
-      ctSet: { name: this.setter('ct', 'name'), email: this.setter('ct', 'email'), message: this.setter('ct', 'message') },
+      ctSet: { name: this.setter('ct', 'name'), email: this.setter('ct', 'email'), message: this.setter('ct', 'message'), website: this.setter('ct', 'website') },
       subjectChips: SUBJECTS.map(l => ({ label: l, selected: st.ct.subject === l, pick: () => this.setState(x => ({ ct: { ...x.ct, subject: l } })) })),
-      resetContact: () => this.setState({ contactSent: false, ct: { name: '', email: '', subject: '', message: '' } })
+      ctSending: st.ctSending, ctFailed: st.ctFailed, ctButton: st.ctSending ? 'Sending...' : 'Send message',
+      resetContact: () => this.setState({ contactSent: false, ctFailed: false, ct: { name: '', email: '', subject: '', message: '', website: '' } })
     };
   }
 }
