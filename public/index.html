@@ -43,10 +43,12 @@
         </sc-for>
         <span aria-hidden="true" style="position: absolute; bottom: 0; height: 3px; border-radius: 999px; background: var(--accent); pointer-events: none; left: {{ ind.left }}px; width: {{ ind.width }}px; opacity: {{ ind.opacity }}; transition: {{ ind.transition }};"></span>
       </nav>
+      <sc-if value="{{ showCart }}" hint-placeholder-val="{{ false }}">
       <a class="mx-header__cart" href="#/cart" aria-label="{{ cartAria }}">
         <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6.2"></path><circle cx="9.5" cy="19.5" r="1.3"></circle><circle cx="17" cy="19.5" r="1.3"></circle></svg>
         <span class="mx-header__count meta">{{ cartCount }}</span>
       </a>
+      </sc-if>
     </header>
   </sc-if>
 
@@ -55,10 +57,12 @@
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
         <a href="#/home" style="display: flex; align-items: center; min-height: 44px; font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--ink); text-decoration: none;">Madox Terrell</a>
         <div style="display: flex; align-items: center; gap: 4px;">
+          <sc-if value="{{ showCart }}" hint-placeholder-val="{{ false }}">
           <a href="#/cart" aria-label="{{ cartAria }}" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 0 8px; color: var(--ink); text-decoration: none;">
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2.5l2.2 10.2a1 1 0 0 0 1 .8h8.6a1 1 0 0 0 1-.8L20 8H6.2"></path><circle cx="9.5" cy="19.5" r="1.3"></circle><circle cx="17" cy="19.5" r="1.3"></circle></svg>
             <span class="meta">{{ cartCount }}</span>
           </a>
+          </sc-if>
           <button type="button" aria-label="Menu" aria-expanded="{{ menuOpenStr }}" aria-controls="mobile-nav" onClick="{{ toggleMenu }}" style="display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; background: transparent; border: 2px solid var(--ink); border-radius: 999px; color: var(--ink); cursor: pointer;">
             <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ menuIconPath }}"></path></svg>
           </button>
@@ -550,8 +554,8 @@
             <div style="display: flex; flex-direction: column; gap: 8px;">
               <span class="eyebrow mx-eyebrow">Social</span>
               <div style="display: flex; gap: 24px;">
-                <a href="#instagram" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
-                <a href="#facebook" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
+                <a href="https://www.instagram.com/madox.music/" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
+                <a href="https://www.facebook.com/madox.terrell/" target="_blank" rel="noopener" class="label" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
               </div>
             </div>
           </div>
@@ -621,10 +625,10 @@
         <span class="small footer-credit">Website by <a href="https://www.matthewmenardmusic.com/commissions" target="_blank" rel="noopener">Matthew Menard</a></span>
       </div>
       <nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 4px 24px;">
-        <a href="#facebook" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
-        <a href="#instagram" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
-        <a href="#/privacy" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Privacy</a>
-        <a href="#/refund" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Refund Policy</a>
+        <a href="https://www.facebook.com/madox.terrell/" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Facebook</a>
+        <a href="https://www.instagram.com/madox.music/" target="_blank" rel="noopener" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Instagram</a>
+        <a href="/privacy-policy" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Privacy</a>
+        <a href="/refund-policy" class="small" style="display: inline-flex; align-items: center; min-height: 44px;">Refund Policy</a>
       </nav>
     </div>
   </footer>
@@ -661,6 +665,7 @@ const PHOTOS = [
   { src: 'assets/madox-portrait-blue.jpg', alt: 'Portrait of Madox Terrell', caption: 'Madox Terrell' },
   { src: 'assets/slot-about-second.webp', alt: 'Madox Terrell singing with a choir', caption: 'Madox Terrell with choir' }
 ];
+const POLICY_PAGES = { privacy: '/privacy-policy', refund: '/refund-policy' };
 const CATS = ['Choir', 'Choir and strings', 'Solo voice', 'Piano'];
 const SUBJECTS = ['Commission', 'Performance', 'Lessons', 'Scores', 'Other'];
 const PAGES = {
@@ -707,6 +712,7 @@ function parseHash() {
   const h = (window.location.hash || '').replace(/^#\/?/, '');
   if (!h || !/^[a-z]/.test(h)) return { page: 'home' };
   const [page, id] = h.split('/');
+  if (POLICY_PAGES[page]) { window.location.replace(POLICY_PAGES[page]); return { page: 'home' }; }
   const score = page === 'score' && SCORES.find(s => s.id === id);
   if (score && score.url) { window.location.replace(score.url); return { page: 'home' }; }
   if (score) return { page: 'score', id };
@@ -944,6 +950,7 @@ class Component extends DCLogic {
       sideOffset: st.w < 1000 ? 0 : 140,
       bandBg: ['home', 'score', 'gallery'].includes(page) ? 'var(--surface)' : 'var(--surface-alt)',
       navLinks, activeNav, cartCount: count,
+      showCart: SCORES.some(x => !x.url),
       cartAria: 'Cart, ' + count + (count === 1 ? ' item' : ' items'),
       navTo: (l) => this.go(l.toLowerCase()), goCart: () => this.go('cart'),
       menuOpen: st.menuOpen, menuOpenStr: st.menuOpen ? 'true' : 'false',
